@@ -16,23 +16,23 @@ class DetailViewController: UIViewController {
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
-            self.configureView()
+            //self.configureView()
         }
     }
 
-    func configureView() {
+    //func configureView() {
         // Update the user interface for the detail item.
-        if let detail = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.valueForKey("timeStamp")!.description
-            }
-        }
-    }
+        //if let detail = self.detailItem {
+            //if let label = self.detailDescriptionLabel {
+                //label.text = detail.valueForKey("timeStamp")!.description
+            //}
+        //}
+    //}
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.configureView()
+        //self.configureView()
     }
 
     override func didReceiveMemoryWarning() {
