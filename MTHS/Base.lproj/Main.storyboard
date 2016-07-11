@@ -306,10 +306,10 @@
             </objects>
             <point key="canvasLocation" x="709" y="-630"/>
         </scene>
-        <!--View Controller-->
+        <!--School Calendar View Controller-->
         <scene sceneID="qiQ-gT-JaE">
             <objects>
-                <viewController id="Epm-Ep-0Im" sceneMemberID="viewController">
+                <viewController id="Epm-Ep-0Im" customClass="SchoolCalendarViewController" customModule="MTHS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QMB-DM-Smt"/>
                         <viewControllerLayoutGuide type="bottom" id="vN7-Wb-MmB"/>
@@ -324,10 +324,10 @@
             </objects>
             <point key="canvasLocation" x="2195" y="-630"/>
         </scene>
-        <!--View Controller-->
+        <!--My Schedule View Controller-->
         <scene sceneID="27b-Mx-doN">
             <objects>
-                <viewController id="AZO-3F-7uu" sceneMemberID="viewController">
+                <viewController id="AZO-3F-7uu" customClass="MyScheduleViewController" customModule="MTHS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OP7-al-gvc"/>
                         <viewControllerLayoutGuide type="bottom" id="56O-4s-5DN"/>
@@ -342,10 +342,10 @@
             </objects>
             <point key="canvasLocation" x="2900" y="-630"/>
         </scene>
-        <!--View Controller-->
+        <!--My Student Cards View Controller-->
         <scene sceneID="lx9-5K-BpK">
             <objects>
-                <viewController id="M77-Kj-Vwg" sceneMemberID="viewController">
+                <viewController id="M77-Kj-Vwg" customClass="MyStudentCardsViewController" customModule="MTHS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tBz-0d-o76"/>
                         <viewControllerLayoutGuide type="bottom" id="gb5-5d-RRD"/>
@@ -360,10 +360,10 @@
             </objects>
             <point key="canvasLocation" x="3609" y="-630"/>
         </scene>
-        <!--View Controller-->
+        <!--My Locker View Controller-->
         <scene sceneID="6Dd-vV-9qY">
             <objects>
-                <viewController id="Gt4-bN-9Py" sceneMemberID="viewController">
+                <viewController id="Gt4-bN-9Py" customClass="MyLockerViewController" customModule="MTHS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sSR-Cw-Kgr"/>
                         <viewControllerLayoutGuide type="bottom" id="Pqn-5q-zqj"/>
@@ -378,10 +378,10 @@
             </objects>
             <point key="canvasLocation" x="4316" y="-630"/>
         </scene>
-        <!--View Controller-->
+        <!--Tech Help View Controller-->
         <scene sceneID="tK1-hs-2tb">
             <objects>
-                <viewController id="mUc-5b-cyL" sceneMemberID="viewController">
+                <viewController id="mUc-5b-cyL" customClass="TechHelpViewController" customModule="MTHS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uYj-1Q-2sg"/>
                         <viewControllerLayoutGuide type="bottom" id="ibl-iZ-3PL"/>
@@ -396,10 +396,10 @@
             </objects>
             <point key="canvasLocation" x="3609" y="113"/>
         </scene>
-        <!--View Controller-->
+        <!--School Agenda View Controller-->
         <scene sceneID="xnK-IB-quZ">
             <objects>
-                <viewController id="eRZ-QQ-v0V" sceneMemberID="viewController">
+                <viewController id="eRZ-QQ-v0V" customClass="SchoolAgendaViewController" customModule="MTHS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yYV-Sb-cT3"/>
                         <viewControllerLayoutGuide type="bottom" id="k80-QA-WrL"/>
@@ -414,10 +414,10 @@
             </objects>
             <point key="canvasLocation" x="2900" y="113"/>
         </scene>
-        <!--View Controller-->
+        <!--School Timetables View Controller-->
         <scene sceneID="7WK-GO-2Y0">
             <objects>
-                <viewController id="tZ1-uQ-KAX" sceneMemberID="viewController">
+                <viewController id="tZ1-uQ-KAX" customClass="SchoolTimetablesViewController" customModule="MTHS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UXm-Tx-KwS"/>
                         <viewControllerLayoutGuide type="bottom" id="hZX-z5-rcH"/>
@@ -432,10 +432,10 @@
             </objects>
             <point key="canvasLocation" x="2195" y="113"/>
         </scene>
-        <!--View Controller-->
+        <!--My Fees View Controller-->
         <scene sceneID="Vce-Z3-QA6">
             <objects>
-                <viewController id="r0f-Fl-wsS" sceneMemberID="viewController">
+                <viewController id="r0f-Fl-wsS" customClass="MyFeesViewController" customModule="MTHS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dWl-FB-HVY"/>
                         <viewControllerLayoutGuide type="bottom" id="Uud-VW-G8O"/>
@@ -450,10 +450,10 @@
             </objects>
             <point key="canvasLocation" x="1453" y="113"/>
         </scene>
-        <!--View Controller-->
+        <!--Morning Announcements View Controller-->
         <scene sceneID="p38-Hm-57s">
             <objects>
-                <viewController id="C6B-8q-3nC" sceneMemberID="viewController">
+                <viewController id="C6B-8q-3nC" customClass="MorningAnnouncementsViewController" customModule="MTHS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CVk-aH-oqz"/>
                         <viewControllerLayoutGuide type="bottom" id="1aN-Ja-WQ6"/>
