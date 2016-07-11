@@ -69,21 +69,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // ...
         FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
             // ...
-            if let user = FIRAuth.auth()?.currentUser {
-                for profile in user.providerData {
-                    //let providerID = profile.providerID
-                    //let uid = profile.uid;  // Provider-specific UID
-                    //let name = profile.displayName
-                    let email = profile.email
-                    print(email!)
-                    //let photoURL = profile.photoURL
-                    
-                    let defaults = NSUserDefaults.standardUserDefaults()
-                    defaults.setObject(email!, forKey: "userEmailAddress")
+            print(user?.email)
+            
+            // before authenticating, check to see it is a @ocsbstudent.ca Domain
+            let fullEmail = user?.email
+            let fullEmailArr = fullEmail!.characters.split{$0 == "@"}.map(String.init)
+            if fullEmailArr[1] == "coxall.ca" {
+                if let user = FIRAuth.auth()?.currentUser {
+                    for profile in user.providerData {
+                        //let providerID = profile.providerID
+                        //let uid = profile.uid;  // Provider-specific UID
+                        //let name = profile.displayName
+                        let email = profile.email
+                        print(email!)
+                        //let photoURL = profile.photoURL
+                        
+                        let defaults = NSUserDefaults.standardUserDefaults()
+                        defaults.setObject(email!, forKey: "userEmailAddress")
+                    }
+                } else {
+                    // No user is signed in.
                 }
             } else {
-                // No user is signed in.
+                // not the correct domain
+                print("You are not using the correct email address")
             }
+            
+            
+            
+
         }
     }
     

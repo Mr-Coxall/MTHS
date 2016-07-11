@@ -45,6 +45,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
 
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError?) {
         //
+        print("Do I ever get here?")
 
     }
     

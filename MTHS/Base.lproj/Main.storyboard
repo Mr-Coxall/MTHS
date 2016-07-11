@@ -100,7 +100,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="showDetail" id="6S0-TO-JiA"/>
+                                            <segue destination="C6B-8q-3nC" kind="showDetail" id="IB6-AV-ZU6"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="lIW-NV-fJY" style="IBUITableViewCellStyleDefault" id="FeI-aR-4eq">
@@ -120,6 +120,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="Epm-Ep-0Im" kind="showDetail" id="tI5-ks-QCN"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="1tw-vw-6zr" style="IBUITableViewCellStyleDefault" id="3UM-Zc-UdM">
                                         <rect key="frame" x="0.0" y="152" width="600" height="44"/>
@@ -138,6 +141,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="AZO-3F-7uu" kind="showDetail" id="lIM-to-D1j"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="JOd-JI-BOY" style="IBUITableViewCellStyleDefault" id="Isn-y9-afP">
                                         <rect key="frame" x="0.0" y="196" width="600" height="44"/>
@@ -156,6 +162,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="M77-Kj-Vwg" kind="showDetail" id="RQT-2t-pPE"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="frR-jx-V8z" style="IBUITableViewCellStyleDefault" id="O6m-LP-OQu">
                                         <rect key="frame" x="0.0" y="240" width="600" height="44"/>
@@ -174,6 +183,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="Gt4-bN-9Py" kind="showDetail" id="Xmv-r7-fKq"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="D3Q-uK-Nc7" style="IBUITableViewCellStyleDefault" id="Nd0-r4-Quq">
                                         <rect key="frame" x="0.0" y="284" width="600" height="44"/>
@@ -192,6 +204,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="r0f-Fl-wsS" kind="showDetail" id="IsI-Uj-gB9"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="QLs-fl-a7N" style="IBUITableViewCellStyleDefault" id="EJl-uy-WoF">
                                         <rect key="frame" x="0.0" y="328" width="600" height="44"/>
@@ -210,6 +225,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="tZ1-uQ-KAX" kind="showDetail" id="s7h-nl-xu4"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Oiu-Zj-XFX" style="IBUITableViewCellStyleDefault" id="rX5-os-eLT">
                                         <rect key="frame" x="0.0" y="372" width="600" height="44"/>
@@ -228,6 +246,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="eRZ-QQ-v0V" kind="showDetail" id="bvL-rN-ktS"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="YeV-It-4sA" style="IBUITableViewCellStyleDefault" id="oVC-1W-oUm">
                                         <rect key="frame" x="0.0" y="416" width="600" height="44"/>
@@ -246,6 +267,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="mUc-5b-cyL" kind="showDetail" id="lye-dQ-UzB"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="IdB-n9-Jvk" style="IBUITableViewCellStyleDefault" id="Zax-Wi-Wbb">
                                         <rect key="frame" x="0.0" y="460" width="600" height="44"/>
@@ -281,6 +305,168 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="709" y="-630"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qiQ-gT-JaE">
+            <objects>
+                <viewController id="Epm-Ep-0Im" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QMB-DM-Smt"/>
+                        <viewControllerLayoutGuide type="bottom" id="vN7-Wb-MmB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6gk-0W-ifs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EUz-g3-Gvh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2195" y="-630"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="27b-Mx-doN">
+            <objects>
+                <viewController id="AZO-3F-7uu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OP7-al-gvc"/>
+                        <viewControllerLayoutGuide type="bottom" id="56O-4s-5DN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gzV-VQ-5wl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gcv-N1-csw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2900" y="-630"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="lx9-5K-BpK">
+            <objects>
+                <viewController id="M77-Kj-Vwg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tBz-0d-o76"/>
+                        <viewControllerLayoutGuide type="bottom" id="gb5-5d-RRD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pVC-EO-j4a">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vdc-U7-3To" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3609" y="-630"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6Dd-vV-9qY">
+            <objects>
+                <viewController id="Gt4-bN-9Py" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sSR-Cw-Kgr"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pqn-5q-zqj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wRp-T8-9cy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rL8-ZU-XHu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4316" y="-630"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tK1-hs-2tb">
+            <objects>
+                <viewController id="mUc-5b-cyL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uYj-1Q-2sg"/>
+                        <viewControllerLayoutGuide type="bottom" id="ibl-iZ-3PL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d1O-pC-wjB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h8P-a4-0HM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3609" y="113"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xnK-IB-quZ">
+            <objects>
+                <viewController id="eRZ-QQ-v0V" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yYV-Sb-cT3"/>
+                        <viewControllerLayoutGuide type="bottom" id="k80-QA-WrL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GIh-EV-P0a">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ffA-cm-Ifr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2900" y="113"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7WK-GO-2Y0">
+            <objects>
+                <viewController id="tZ1-uQ-KAX" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UXm-Tx-KwS"/>
+                        <viewControllerLayoutGuide type="bottom" id="hZX-z5-rcH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SoC-fL-rfa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3fF-Xe-Uax" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2195" y="113"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Vce-Z3-QA6">
+            <objects>
+                <viewController id="r0f-Fl-wsS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dWl-FB-HVY"/>
+                        <viewControllerLayoutGuide type="bottom" id="Uud-VW-G8O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jRU-f6-JCY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2YZ-uV-2zj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1453" y="113"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="p38-Hm-57s">
+            <objects>
+                <viewController id="C6B-8q-3nC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CVk-aH-oqz"/>
+                        <viewControllerLayoutGuide type="bottom" id="1aN-Ja-WQ6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ubG-Xh-1XK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6mg-hU-fb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1458" y="-630"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="4cb-qd-rgB">
@@ -324,7 +510,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sr8-an-ahk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2079" y="-251"/>
+            <point key="canvasLocation" x="4316" y="113"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -342,7 +528,4 @@
             <point key="canvasLocation" x="-45" y="129"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="6S0-TO-JiA"/>
-    </inferredMetricsTieBreakers>
 </document>
