@@ -282,10 +282,10 @@
             </objects>
             <point key="canvasLocation" x="709" y="-630"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="4cb-qd-rgB">
             <objects>
-                <viewController id="KK8-6M-ipK" sceneMemberID="viewController">
+                <viewController id="KK8-6M-ipK" customClass="LoginViewController" customModule="MTHS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pBA-Xn-bo2"/>
                         <viewControllerLayoutGuide type="bottom" id="fue-Pw-Tc4"/>
@@ -293,8 +293,34 @@
                     <view key="view" contentMode="scaleToFill" id="uyT-Qu-5jc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tW-IK-l9q">
+                                <rect key="frame" x="273" y="370" width="54" height="30"/>
+                                <state key="normal" title="Login In"/>
+                                <connections>
+                                    <action selector="loginButtonTouchUpInside:" destination="KK8-6M-ipK" eventType="touchUpInside" id="OUa-qb-byf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEB-Z9-1cf">
+                                <rect key="frame" x="273" y="420" width="55" height="30"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="logoutButtonTouchUpInside:" destination="KK8-6M-ipK" eventType="touchUpInside" id="8Tz-Vy-heG"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fue-Pw-Tc4" firstAttribute="top" secondItem="3tW-IK-l9q" secondAttribute="bottom" constant="200" id="47m-fz-gFo"/>
+                            <constraint firstItem="fue-Pw-Tc4" firstAttribute="top" secondItem="HEB-Z9-1cf" secondAttribute="bottom" constant="150" id="BrI-OV-fDg"/>
+                            <constraint firstItem="3tW-IK-l9q" firstAttribute="centerX" secondItem="uyT-Qu-5jc" secondAttribute="centerX" id="SUB-19-VI2"/>
+                            <constraint firstItem="HEB-Z9-1cf" firstAttribute="centerX" secondItem="uyT-Qu-5jc" secondAttribute="centerX" id="k1a-46-m5B"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="3tW-IK-l9q" id="icB-sH-ppO"/>
+                        <outlet property="logoutButton" destination="HEB-Z9-1cf" id="q1t-lh-9fb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sr8-an-ahk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

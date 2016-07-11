@@ -13,7 +13,7 @@ import CoreData
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
@@ -29,10 +29,71 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let controller = masterNavigationController.topViewController as! MasterViewController
         controller.managedObjectContext = self.managedObjectContext
         
-        //Google
+        // Use Firebase library to configure APIs
         FIRApp.configure()
+        
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        
+        // check if user is logged in
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let userEmailAddress = defaults.stringForKey("userEmailAddress") {
+            print("User logger in:")
+            print(userEmailAddress)
+        }
+        
         return true
     }
+    
+    // Google Signin
+    func application(application: UIApplication,
+                     openURL url: NSURL, options: [String: AnyObject]) -> Bool {
+        return GIDSignIn.sharedInstance().handleURL(url,
+                                                    sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String,
+                                                    annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+    }
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+                withError error: NSError!) {
+        if let error = error {
+            print(error.localizedDescription)
+            
+            return
+        }
+        // ...
+
+        
+        let authentication = user.authentication
+        let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken,
+                                                                     accessToken: authentication.accessToken)
+        // ...
+        FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+            // ...
+            if let user = FIRAuth.auth()?.currentUser {
+                for profile in user.providerData {
+                    //let providerID = profile.providerID
+                    //let uid = profile.uid;  // Provider-specific UID
+                    //let name = profile.displayName
+                    let email = profile.email
+                    print(email!)
+                    //let photoURL = profile.photoURL
+                    
+                    let defaults = NSUserDefaults.standardUserDefaults()
+                    defaults.setObject(email!, forKey: "userEmailAddress")
+                }
+            } else {
+                // No user is signed in.
+            }
+        }
+    }
+    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
+                withError error: NSError!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+        
+    }
+    
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
