@@ -32,25 +32,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
-                                <rect key="frame" x="20" y="292" width="560" height="17"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ts-Pa-bTF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" symbolic="YES" id="Tsc-yG-G1q"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="jWN-iV-94e"/>
-                            <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="20" symbolic="YES" id="tHV-ZD-HQj"/>
+                            <constraint firstAttribute="trailing" secondItem="4Ts-Pa-bTF" secondAttribute="trailing" id="MKs-CP-cP0"/>
+                            <constraint firstItem="4Ts-Pa-bTF" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="fgv-dE-lP2"/>
+                            <constraint firstItem="4Ts-Pa-bTF" firstAttribute="bottom" secondItem="GAO-Cl-Wes" secondAttribute="top" id="ggc-PH-BYm"/>
+                            <constraint firstItem="4Ts-Pa-bTF" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="top" id="k3Q-sJ-Mvb"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Morning Announcements" id="mOI-FS-AaM"/>
                     <connections>
-                        <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
+                        <outlet property="detailedViewWebView" destination="4Ts-Pa-bTF" id="2sR-ZE-tJu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
@@ -300,7 +298,7 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="MTHS App" id="Zdf-7t-Un8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
@@ -317,8 +315,23 @@
                     <view key="view" contentMode="scaleToFill" id="6gk-0W-ifs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlp-8p-GLp">
+                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Rlp-8p-GLp" secondAttribute="trailing" id="6BJ-zl-Bg8"/>
+                            <constraint firstItem="Rlp-8p-GLp" firstAttribute="bottom" secondItem="vN7-Wb-MmB" secondAttribute="top" id="cPk-lU-Phk"/>
+                            <constraint firstItem="Rlp-8p-GLp" firstAttribute="leading" secondItem="6gk-0W-ifs" secondAttribute="leading" id="lvb-QB-kSN"/>
+                            <constraint firstItem="Rlp-8p-GLp" firstAttribute="top" secondItem="QMB-DM-Smt" secondAttribute="bottom" constant="8" id="s9C-qh-GAx"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="schoolCalendarWebView" destination="Rlp-8p-GLp" id="1Uo-Vf-gST"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EUz-g3-Gvh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -407,8 +420,17 @@
                     <view key="view" contentMode="scaleToFill" id="GIh-EV-P0a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yaG-cb-nuK">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="schoolAgendaWebView" destination="yaG-cb-nuK" id="OOj-B0-QV5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffA-cm-Ifr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -425,8 +447,23 @@
                     <view key="view" contentMode="scaleToFill" id="SoC-fL-rfa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KL0-UI-AgS">
+                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KL0-UI-AgS" firstAttribute="top" secondItem="UXm-Tx-KwS" secondAttribute="bottom" constant="8" symbolic="YES" id="YqZ-Uh-Pqs"/>
+                            <constraint firstItem="KL0-UI-AgS" firstAttribute="leading" secondItem="SoC-fL-rfa" secondAttribute="leading" id="cJH-3d-nL7"/>
+                            <constraint firstItem="KL0-UI-AgS" firstAttribute="bottom" secondItem="hZX-z5-rcH" secondAttribute="top" id="fY1-nE-1Sc"/>
+                            <constraint firstAttribute="trailing" secondItem="KL0-UI-AgS" secondAttribute="trailing" id="u7L-Qa-t51"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="schoolTimetableWebView" destination="KL0-UI-AgS" id="zov-3D-Riz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fF-Xe-Uax" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -461,8 +498,23 @@
                     <view key="view" contentMode="scaleToFill" id="ubG-Xh-1XK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbI-Pe-eWH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="SbI-Pe-eWH" secondAttribute="trailing" id="4eD-5A-m40"/>
+                            <constraint firstItem="SbI-Pe-eWH" firstAttribute="top" secondItem="ubG-Xh-1XK" secondAttribute="top" id="5uQ-ET-SBO"/>
+                            <constraint firstItem="SbI-Pe-eWH" firstAttribute="bottom" secondItem="1aN-Ja-WQ6" secondAttribute="top" id="7ev-Ci-6L7"/>
+                            <constraint firstItem="SbI-Pe-eWH" firstAttribute="leading" secondItem="ubG-Xh-1XK" secondAttribute="leading" id="FYU-XO-T5A"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="morningAnnouncementsWebView" destination="SbI-Pe-eWH" id="qan-re-t1l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mg-hU-fb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

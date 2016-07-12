@@ -10,10 +10,17 @@ import UIKit
 
 class SchoolTimetablesViewController: UIViewController {
 
+    @IBOutlet weak var schoolTimetableWebView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // load school timetable
+        let url = NSBundle.mainBundle().URLForResource("School Timetables", withExtension:"html")
+        let requestObj = NSURLRequest(URL: url!);
+        schoolTimetableWebView.loadRequest(requestObj);
     }
 
     override func didReceiveMemoryWarning() {

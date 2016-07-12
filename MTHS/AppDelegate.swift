@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             // before authenticating, check to see it is a @ocsbstudent.ca Domain
             let fullEmail = user?.email
             let fullEmailArr = fullEmail!.characters.split{$0 == "@"}.map(String.init)
-            if fullEmailArr[1] == "coxall.ca" {
+            if fullEmailArr[1] == "ocsbstudent.ca" {
                 if let user = FIRAuth.auth()?.currentUser {
                     for profile in user.providerData {
                         //let providerID = profile.providerID

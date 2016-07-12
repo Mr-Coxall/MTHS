@@ -10,8 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
 
+    @IBOutlet weak var detailedViewWebView: UIWebView!
 
     var detailItem: AnyObject? {
         didSet {
@@ -33,6 +33,11 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //self.configureView()
+        
+        // load morning announcements
+        let url = NSURL (string: "https://mother-teresa-hs.blogspot.ca/?m=1");
+        let requestObj = NSURLRequest(URL: url!);
+        detailedViewWebView.loadRequest(requestObj);
     }
 
     override func didReceiveMemoryWarning() {
