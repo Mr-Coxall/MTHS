@@ -11,18 +11,28 @@ import UIKit
 // Google
 import Firebase
 
-class LoginViewController: UIViewController, GIDSignInUIDelegate {
+class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var loginButton: GIDSignInButton!
+    @IBOutlet weak var logoutButton: GIDSignInButton!
     
     // variables
     //var credential : FIRAuthCredential
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Use Firebase library to configure APIs
+        FIRApp.configure()
+        
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
 
         // Do any additional setup after loading the view.
+        //let button = GIDSignInButton(frame: CGRectMake(0, 0, 100, 100))
+        //button.center = view.center
+        
+        //view.addSubview(button)
         
         // Google Signin
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -42,11 +52,36 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
             logoutButton.enabled = false
         }
     }
+    
+    // Google Signin
 
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError?) {
         //
-        print("Do I ever get here?")
-
+        
+        print ("In view Controller")
+        if let error = error {
+            //self.showMessagePrompt(error.localizedDescription)
+            print(error.localizedDescription)
+            
+            return
+        }
+        
+        let authentication = user.authentication
+        let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken,
+                                                                     accessToken: authentication.accessToken)
+        // ...
+        FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+            // ...
+        }
+    }
+    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
+                withError error: NSError!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+        print ("In view Controller")
+        
+        try! FIRAuth.auth()!.signOut()
     }
     
 

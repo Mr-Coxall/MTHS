@@ -13,7 +13,7 @@ import CoreData
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
 
@@ -30,10 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         controller.managedObjectContext = self.managedObjectContext
         
         // Use Firebase library to configure APIs
-        FIRApp.configure()
+        //FIRApp.configure()
         
-        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+        //GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        //GIDSignIn.sharedInstance().delegate = self
         
         // check if user is logged in
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         return true
     }
-    
+
     // Google Signin
     func application(application: UIApplication,
                      openURL url: NSURL, options: [String: AnyObject]) -> Bool {
@@ -52,16 +52,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                                                     sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String,
                                                     annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
     }
-    
+/*
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
                 withError error: NSError!) {
+        // 
+        
+        print ("In app delegate")
+        
         if let error = error {
             print(error.localizedDescription)
-            
             return
         }
         // ...
-
         
         let authentication = user.authentication
         let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken,
@@ -93,11 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             } else {
                 // not the correct domain
                 print("You are not using the correct email address")
+                
             }
-            
-            
-            
-
         }
     }
     
@@ -106,8 +105,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Perform any operations when the user disconnects from app here.
         // ...
         
+        print ("In app delegate")
     }
-    
+   */
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
