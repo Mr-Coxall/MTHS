@@ -29,11 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let controller = masterNavigationController.topViewController as! MasterViewController
         controller.managedObjectContext = self.managedObjectContext
         
-        // Use Firebase library to configure APIs
-        //FIRApp.configure()
-        
-        //GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
-        //GIDSignIn.sharedInstance().delegate = self
         
         // check if user is logged in
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -52,62 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                                                     sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String,
                                                     annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
     }
-/*
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-                withError error: NSError!) {
-        // 
-        
-        print ("In app delegate")
-        
-        if let error = error {
-            print(error.localizedDescription)
-            return
-        }
-        // ...
-        
-        let authentication = user.authentication
-        let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken,
-                                                                     accessToken: authentication.accessToken)
-        // ...
-        FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
-            // ...
-            print(user?.email)
-            
-            // before authenticating, check to see it is a @ocsbstudent.ca Domain
-            let fullEmail = user?.email
-            let fullEmailArr = fullEmail!.characters.split{$0 == "@"}.map(String.init)
-            if fullEmailArr[1] == "ocsbstudent.ca" {
-                if let user = FIRAuth.auth()?.currentUser {
-                    for profile in user.providerData {
-                        //let providerID = profile.providerID
-                        //let uid = profile.uid;  // Provider-specific UID
-                        //let name = profile.displayName
-                        let email = profile.email
-                        print(email!)
-                        //let photoURL = profile.photoURL
-                        
-                        let defaults = NSUserDefaults.standardUserDefaults()
-                        defaults.setObject(email!, forKey: "userEmailAddress")
-                    }
-                } else {
-                    // No user is signed in.
-                }
-            } else {
-                // not the correct domain
-                print("You are not using the correct email address")
-                
-            }
-        }
-    }
     
-    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
-                withError error: NSError!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-        
-        print ("In app delegate")
-    }
-   */
+
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -72,6 +72,47 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         // ...
         FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
             // ...
+            print(user?.email)
+            
+            // before authenticating, check to see it is a @ocsbstudent.ca Domain
+            let fullEmail = user?.email
+            let fullEmailArr = fullEmail!.characters.split{$0 == "@"}.map(String.init)
+            if fullEmailArr[1] == "ocsbstudent.ca" {
+                if let user = FIRAuth.auth()?.currentUser {
+                    for profile in user.providerData {
+                        //let providerID = profile.providerID
+                        //let uid = profile.uid;  // Provider-specific UID
+                        //let name = profile.displayName
+                        let email = profile.email
+                        print(email!)
+                        //let photoURL = profile.photoURL
+                        
+                        let defaults = NSUserDefaults.standardUserDefaults()
+                        defaults.setObject(email!, forKey: "userEmailAddress")
+                    }
+                } else {
+                    // No user is signed in.
+                }
+                self.loginButton.enabled = false
+                self.logoutButton.enabled = true
+                
+                print("Logged in")
+                
+            } else {
+                // not the correct domain
+                print("You are not using the correct email address")
+                let user = FIRAuth.auth()?.currentUser
+                
+                user?.deleteWithCompletion { error in
+                    if let error = error {
+                        // An error happened.
+                        print(error)
+                    } else {
+                        // Account deleted.
+                        print("Account deleted")
+                    }
+                }
+            }
         }
     }
     
@@ -79,9 +120,31 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 withError error: NSError!) {
         // Perform any operations when the user disconnects from app here.
         // ...
+        /*
         print ("In view Controller")
         
         try! FIRAuth.auth()!.signOut()
+        
+        loginButton.enabled = true
+        logoutButton.enabled = false
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.removeObjectForKey("userEmailAddress")
+        
+        let user = FIRAuth.auth()?.currentUser
+        
+        user?.deleteWithCompletion { error in
+            if let error = error {
+                // An error happened.
+                print(error)
+            } else {
+                // Account deleted.
+                print("Account deleted")
+            }
+        }
+        
+        print("Logged out")
+ */
     }
     
 
@@ -89,15 +152,29 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         // Google Signin
 
         GIDSignIn.sharedInstance().signIn()
-        loginButton.enabled = false
-        logoutButton.enabled = true
+        //loginButton.enabled = false
+        //logoutButton.enabled = true
         
-        print("Logged in")
+        //print("Logged in")
     }
     
     @IBAction func logoutButtonTouchUpInside(sender: AnyObject) {
         // Google SingOut
-        GIDSignIn.sharedInstance().signOut()
+        //GIDSignIn.sharedInstance().signOut()
+        
+        let user = FIRAuth.auth()?.currentUser
+        user?.deleteWithCompletion { error in
+            if let error = error {
+                // An error happened.
+                print(error)
+            } else {
+                // Account deleted.
+                print("Account deleted")
+            }
+        }
+
+        try! FIRAuth.auth()!.signOut()
+        
         loginButton.enabled = true
         logoutButton.enabled = false
         
