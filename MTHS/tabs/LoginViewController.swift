@@ -58,7 +58,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError?) {
         //
         
-        print ("In view Controller")
+        //print ("In view Controller")
         if let error = error {
             //self.showMessagePrompt(error.localizedDescription)
             print(error.localizedDescription)
@@ -93,14 +93,95 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 } else {
                     // No user is signed in.
                 }
-                self.loginButton.enabled = false
-                self.logoutButton.enabled = true
+
                 
                 print("Logged in")
+                
+                // now need to get the user info from Chris's database
+                
+                let studentInfoRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/student_json.php?email="+fullEmail!)
+                let studentInfoURLRequest = NSURLRequest(URL: studentInfoRequestURL!)
+                let session = NSURLSession.sharedSession()
+                let task = session.dataTaskWithRequest(studentInfoURLRequest, completionHandler: { (data, response, error) in
+                    guard let responseData = data else {
+                        print("Error: did not receive data")
+                        let alert = UIAlertController(title: "Alert", message: "Unable to get your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                        
+                        return
+                    }
+                    guard error == nil else {
+                        print("error calling GET on /posts/1")
+                        print(error)
+                        let alert = UIAlertController(title: "Alert", message: "Unable to get your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                        
+                        return
+                    }
+                    
+                    do {
+                        let jsonData = try NSJSONSerialization.JSONObjectWithData(responseData, options: .MutableContainers) as! NSArray
+                        // Do Stuff
+                        print(jsonData)
+                        
+                        if jsonData.count==1 {
+                            // if there is a single record
+                            if let item = jsonData[0] as? [String: AnyObject] {
+                                let studentName = item["name"] as? String
+                                let studentHomeroom = item["homeroom"] as? String
+                                let studentNumberAsString = item["student_number"] as? String
+                                
+                                guard let studentNumber:Int = Int(studentNumberAsString!)! else {
+                                    print("Cannot convert student number to int")
+                                    let alert = UIAlertController(title: "Alert", message: "Unable to get your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                                    self.presentViewController(alert, animated: true, completion: nil)
+                                    
+                                    return
+                                }
+
+                                // add info to user defaults
+                                let defaults = NSUserDefaults.standardUserDefaults()
+                                defaults.setObject(studentName!, forKey: "studentName")
+                                defaults.setObject(studentHomeroom!, forKey: "studentHomeroom")
+                                defaults.setObject(studentNumber, forKey: "studentNumber")
+                                
+                                // finally done, you have good basic student info
+                                //change over the login buttons
+                                self.loginButton.enabled = false
+                                self.logoutButton.enabled = true
+                            } else {
+                                print("error getting student data")
+                                let alert = UIAlertController(title: "Alert", message: "Error getting your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                                self.presentViewController(alert, animated: true, completion: nil)
+                            }
+                            
+                        } else {
+                            // no data for that student returned
+                            print("No student data")
+                            let alert = UIAlertController(title: "Alert", message: "Error getting your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(alert, animated: true, completion: nil)
+                        }
+                        
+                    } catch {
+                        // handle error
+                    }
+
+                })
+                
+                task.resume()
                 
             } else {
                 // not the correct domain
                 print("You are not using the correct email address")
+                let alert = UIAlertController(title: "Alert", message: "You are not using the correct email address. You must login using an @ocsbstudent.ca domain.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
                 let user = FIRAuth.auth()?.currentUser
                 
                 user?.deleteWithCompletion { error in
@@ -120,31 +201,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 withError error: NSError!) {
         // Perform any operations when the user disconnects from app here.
         // ...
-        /*
-        print ("In view Controller")
-        
-        try! FIRAuth.auth()!.signOut()
-        
-        loginButton.enabled = true
-        logoutButton.enabled = false
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.removeObjectForKey("userEmailAddress")
-        
-        let user = FIRAuth.auth()?.currentUser
-        
-        user?.deleteWithCompletion { error in
-            if let error = error {
-                // An error happened.
-                print(error)
-            } else {
-                // Account deleted.
-                print("Account deleted")
-            }
-        }
-        
-        print("Logged out")
- */
+
     }
     
 
@@ -152,15 +209,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         // Google Signin
 
         GIDSignIn.sharedInstance().signIn()
-        //loginButton.enabled = false
-        //logoutButton.enabled = true
-        
-        //print("Logged in")
     }
     
     @IBAction func logoutButtonTouchUpInside(sender: AnyObject) {
         // Google SingOut
-        //GIDSignIn.sharedInstance().signOut()
+        GIDSignIn.sharedInstance().signOut()
         
         let user = FIRAuth.auth()?.currentUser
         user?.deleteWithCompletion { error in
@@ -180,6 +233,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey("userEmailAddress")
+        defaults.removeObjectForKey("studentName")
+        defaults.removeObjectForKey("studentHomeroom")
+        defaults.removeObjectForKey("studentNumber")
         
         print("Logged out")
     }
