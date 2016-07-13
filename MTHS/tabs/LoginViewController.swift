@@ -15,12 +15,33 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     @IBOutlet weak var loginButton: GIDSignInButton!
     @IBOutlet weak var logoutButton: GIDSignInButton!
+    @IBOutlet weak var loginStatusLabel: UILabel!
+    @IBOutlet weak var gettingDataActivityIndicator: UIActivityIndicatorView!
     
     // variables
     //var credential : FIRAuthCredential
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // check if you are currently logged in and have data stored locally
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let studentName = defaults.stringForKey("studentName") {
+            print("User logger in:")
+            print(studentName)
+            loginButton.enabled = false
+            logoutButton.enabled = true
+            loginStatusLabel.alpha = 1.0
+            self.loginStatusLabel.text = "Logged in as \(studentName)"
+        } else {
+            loginButton.enabled = true
+            logoutButton.enabled = false
+            loginStatusLabel.alpha = 0.0
+        }
+        
+        // make the Login Status label invisible
+        gettingDataActivityIndicator.hidesWhenStopped = true
+        gettingDataActivityIndicator.stopAnimating()
         
         // Use Firebase library to configure APIs
         FIRApp.configure()
@@ -40,23 +61,51 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         // Uncomment to automatically sign in the user.
         //GIDSignIn.sharedInstance().signInSilently()
 
-        // check if user is logged in
+    }
+    
+    // Error during signing
+    func errorDuringSigningProcess(errorThatOccured: String) {
+        // something has gone wrong during signing,
+        // so set everything back as if you are not signined in
+        
+        print(errorThatOccured)
+        self.loginButton.enabled = false
+        self.logoutButton.enabled = true
+        self.gettingDataActivityIndicator.stopAnimating()
+        self.loginStatusLabel.text = "Error occured while getting your student data, please contact the librarian."
+        
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let userEmailAddress = defaults.stringForKey("userEmailAddress") {
-            print("User logger in:")
-            print(userEmailAddress)
-            loginButton.enabled = false
-            logoutButton.enabled = true
-        } else {
-            loginButton.enabled = true
-            logoutButton.enabled = false
+        defaults.removeObjectForKey("userEmailAddress")
+        defaults.removeObjectForKey("studentName")
+        defaults.removeObjectForKey("studentHomeroom")
+        defaults.removeObjectForKey("studentNumber")
+        
+        let alert = UIAlertController(title: "Alert", message: "Unable to get your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        let user = FIRAuth.auth()?.currentUser
+        
+        user?.deleteWithCompletion { error in
+            if let error = error {
+                // An error happened.
+                print(error)
+            } else {
+                // Account deleted.
+                print("Account deleted")
+            }
         }
     }
     
     // Google Signin
 
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError?) {
-        //
+        // start the signing process
+        
+        self.gettingDataActivityIndicator.startAnimating()
+        self.loginStatusLabel.alpha = 1.0
+        self.loginButton.enabled = false
+        self.loginStatusLabel.text = "Signing process started."
         
         //print ("In view Controller")
         if let error = error {
@@ -78,6 +127,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             let fullEmail = user?.email
             let fullEmailArr = fullEmail!.characters.split{$0 == "@"}.map(String.init)
             if fullEmailArr[1] == "ocsbstudent.ca" {
+                self.loginStatusLabel.text = "You have logged in as \(fullEmail)"
                 if let user = FIRAuth.auth()?.currentUser {
                     for profile in user.providerData {
                         //let providerID = profile.providerID
@@ -92,31 +142,27 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                     }
                 } else {
                     // No user is signed in.
+                    self.errorDuringSigningProcess("No user is signed in.")
                 }
-
                 
-                print("Logged in")
+                print("Logged in started")
                 
                 // now need to get the user info from Chris's database
+                self.loginStatusLabel.text = "Getting your student information from database."
                 
                 let studentInfoRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/student_json.php?email="+fullEmail!)
                 let studentInfoURLRequest = NSURLRequest(URL: studentInfoRequestURL!)
                 let session = NSURLSession.sharedSession()
                 let task = session.dataTaskWithRequest(studentInfoURLRequest, completionHandler: { (data, response, error) in
                     guard let responseData = data else {
-                        print("Error: did not receive data")
-                        let alert = UIAlertController(title: "Alert", message: "Unable to get your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
+                        //print("Error: did not receive data")
+                        self.errorDuringSigningProcess("Error: did not receive data")
                         
                         return
                     }
                     guard error == nil else {
-                        print("error calling GET on /posts/1")
-                        print(error)
-                        let alert = UIAlertController(title: "Alert", message: "Unable to get your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
+                        //print("error calling GET on /posts/1")
+                        self.errorDuringSigningProcess("error calling GET on /posts/1")
                         
                         return
                     }
@@ -124,47 +170,53 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                     do {
                         let jsonData = try NSJSONSerialization.JSONObjectWithData(responseData, options: .MutableContainers) as! NSArray
                         // Do Stuff
-                        print(jsonData)
+                        self.loginStatusLabel.text = "Pasring your data retrieved from database."
+                        print("Data retrieved from database")
                         
                         if jsonData.count==1 {
                             // if there is a single record
                             if let item = jsonData[0] as? [String: AnyObject] {
-                                let studentName = item["name"] as? String
+                                let studentReversedName = item["name"] as? String
                                 let studentHomeroom = item["homeroom"] as? String
                                 let studentNumberAsString = item["student_number"] as? String
                                 
                                 guard let studentNumber:Int = Int(studentNumberAsString!)! else {
-                                    print("Cannot convert student number to int")
-                                    let alert = UIAlertController(title: "Alert", message: "Unable to get your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
-                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                                    self.presentViewController(alert, animated: true, completion: nil)
+                                    //print("Cannot convert student number to int")
+                                    self.errorDuringSigningProcess("Cannot convert student number to int")
                                     
                                     return
                                 }
+                                
+                                // get the order of student name correct
+                                let studentNameArr = studentReversedName!.characters.split{$0 == ","}.map(String.init)
+                                let studentName = studentNameArr[1] + " " + studentNameArr[0]
 
                                 // add info to user defaults
+                                self.loginStatusLabel.text = "Saving your student data."
+                                print("Saving to user defaults")
                                 let defaults = NSUserDefaults.standardUserDefaults()
-                                defaults.setObject(studentName!, forKey: "studentName")
+                                defaults.setObject(studentName, forKey: "studentName")
                                 defaults.setObject(studentHomeroom!, forKey: "studentHomeroom")
                                 defaults.setObject(studentNumber, forKey: "studentNumber")
                                 
                                 // finally done, you have good basic student info
                                 //change over the login buttons
+                                self.loginStatusLabel.text = "Logged in as \(studentName)"
                                 self.loginButton.enabled = false
                                 self.logoutButton.enabled = true
+                                
+                                // all done
+                                self.gettingDataActivityIndicator.stopAnimating()
+                                print("All done getting student data")
                             } else {
                                 print("error getting student data")
-                                let alert = UIAlertController(title: "Alert", message: "Error getting your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                                self.presentViewController(alert, animated: true, completion: nil)
+                                self.errorDuringSigningProcess("error getting student data")
                             }
                             
                         } else {
                             // no data for that student returned
                             print("No student data")
-                            let alert = UIAlertController(title: "Alert", message: "Error getting your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                            self.presentViewController(alert, animated: true, completion: nil)
+                            self.errorDuringSigningProcess("No student data")
                         }
                         
                     } catch {
@@ -178,6 +230,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             } else {
                 // not the correct domain
                 print("You are not using the correct email address")
+                self.loginButton.enabled = false
+                self.logoutButton.enabled = true
+                self.gettingDataActivityIndicator.stopAnimating()
                 let alert = UIAlertController(title: "Alert", message: "You are not using the correct email address. You must login using an @ocsbstudent.ca domain.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
@@ -213,6 +268,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     @IBAction func logoutButtonTouchUpInside(sender: AnyObject) {
         // Google SingOut
+        
+        loginStatusLabel.alpha = 0.0
+        gettingDataActivityIndicator.stopAnimating()
+        
         GIDSignIn.sharedInstance().signOut()
         
         let user = FIRAuth.auth()?.currentUser

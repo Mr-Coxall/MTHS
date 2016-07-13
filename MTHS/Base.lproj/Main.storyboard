@@ -545,17 +545,32 @@
                                     <action selector="logoutButtonTouchUpInside:" destination="KK8-6M-ipK" eventType="touchUpInside" id="8Tz-Vy-heG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Status Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgQ-Q5-ZnE">
+                                <rect key="frame" x="207" y="80" width="187" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aHD-I3-CGg">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fue-Pw-Tc4" firstAttribute="top" secondItem="3tW-IK-l9q" secondAttribute="bottom" constant="200" id="47m-fz-gFo"/>
                             <constraint firstItem="fue-Pw-Tc4" firstAttribute="top" secondItem="HEB-Z9-1cf" secondAttribute="bottom" constant="150" id="BrI-OV-fDg"/>
+                            <constraint firstItem="aHD-I3-CGg" firstAttribute="centerY" secondItem="uyT-Qu-5jc" secondAttribute="centerY" id="Ihi-Ql-MJ9"/>
                             <constraint firstItem="3tW-IK-l9q" firstAttribute="centerX" secondItem="uyT-Qu-5jc" secondAttribute="centerX" id="SUB-19-VI2"/>
+                            <constraint firstItem="HgQ-Q5-ZnE" firstAttribute="top" secondItem="pBA-Xn-bo2" secondAttribute="bottom" constant="60" id="cdd-Y3-RQd"/>
                             <constraint firstItem="HEB-Z9-1cf" firstAttribute="centerX" secondItem="uyT-Qu-5jc" secondAttribute="centerX" id="k1a-46-m5B"/>
+                            <constraint firstItem="aHD-I3-CGg" firstAttribute="centerX" secondItem="uyT-Qu-5jc" secondAttribute="centerX" id="l9i-wh-WSe"/>
+                            <constraint firstItem="HgQ-Q5-ZnE" firstAttribute="centerX" secondItem="uyT-Qu-5jc" secondAttribute="centerX" id="t9W-GC-aZ1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gettingDataActivityIndicator" destination="aHD-I3-CGg" id="yWN-Uk-Ufu"/>
                         <outlet property="loginButton" destination="3tW-IK-l9q" id="icB-sH-ppO"/>
+                        <outlet property="loginStatusLabel" destination="HgQ-Q5-ZnE" id="FI8-LA-ec9"/>
                         <outlet property="logoutButton" destination="HEB-Z9-1cf" id="q1t-lh-9fb"/>
                     </connections>
                 </viewController>
