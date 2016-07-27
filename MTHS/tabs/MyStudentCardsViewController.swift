@@ -10,10 +10,35 @@ import UIKit
 
 class MyStudentCardsViewController: UIViewController {
 
+    @IBOutlet weak var studentNameLabel: UILabel!
+    @IBOutlet weak var studentNumberLabel: UILabel!
+    @IBOutlet weak var studentBarCodeLabel: UILabel!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // check if user is logged in
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let userEmailAddress = defaults.stringForKey("userEmailAddress") {
+            print(userEmailAddress)
+            
+            let studentName = defaults.stringForKey("studentName")
+            studentNameLabel.text = studentName
+            
+            let studentNumber = defaults.stringForKey("studentNumber")
+            studentNumberLabel.text = studentNumber
+            
+            //let studentBarCode = "*" + studentNumber! + "*"
+            //studentBarCodeLabel.text = studentBarCode
+            
+        } else {
+            // if user is not logged in, then student info needs to not be accessable
+            // test
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -30,6 +30,7 @@
 		0481FCD31D3480D8000559FF /* fre3of9x.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0481FCD01D3480D8000559FF /* fre3of9x.ttf */; };
 		04B30E111D484736006EC846 /* MTHS_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E101D484736006EC846 /* MTHS_Logo.png */; };
 		04B30E131D484868006EC846 /* Student Card Background iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E121D484868006EC846 /* Student Card Background iPad.png */; };
+		04B30E151D484F6F006EC846 /* MTHS_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E141D484F6F006EC846 /* MTHS_Logo.jpg */; };
 		837D245668CB23A1BA807703 /* Pods_MTHS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9747D267CB8CFE1FBD96B9B6 /* Pods_MTHS.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		0481FCD01D3480D8000559FF /* fre3of9x.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fre3of9x.ttf; sourceTree = "<group>"; };
 		04B30E101D484736006EC846 /* MTHS_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MTHS_Logo.png; sourceTree = "<group>"; };
 		04B30E121D484868006EC846 /* Student Card Background iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Student Card Background iPad.png"; sourceTree = "<group>"; };
+		04B30E141D484F6F006EC846 /* MTHS_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MTHS_Logo.jpg; sourceTree = "<group>"; };
 		6825AFFF76AFB66033CE10A0 /* Pods-MTHS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTHS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MTHS/Pods-MTHS.debug.xcconfig"; sourceTree = "<group>"; };
 		9747D267CB8CFE1FBD96B9B6 /* Pods_MTHS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MTHS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D269A37502D25E7D61D5BA17 /* Pods-MTHS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTHS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MTHS/Pods-MTHS.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				0481FCCE1D3480D8000559FF /* Student Handbook.pdf */,
 				0481FCCF1D3480D8000559FF /* School Timetables.html */,
 				04B30E101D484736006EC846 /* MTHS_Logo.png */,
+				04B30E141D484F6F006EC846 /* MTHS_Logo.jpg */,
 				04B30E121D484868006EC846 /* Student Card Background iPad.png */,
 				0481FCD01D3480D8000559FF /* fre3of9x.ttf */,
 			);
@@ -228,6 +231,7 @@
 				0481FCAA1D311DC6000559FF /* LaunchScreen.storyboard in Resources */,
 				0481FCB21D311E30000559FF /* GoogleService-Info.plist in Resources */,
 				04B30E111D484736006EC846 /* MTHS_Logo.png in Resources */,
+				04B30E151D484F6F006EC846 /* MTHS_Logo.jpg in Resources */,
 				0481FCD21D3480D8000559FF /* School Timetables.html in Resources */,
 				0481FCA71D311DC6000559FF /* Assets.xcassets in Resources */,
 				0481FCA51D311DC6000559FF /* Main.storyboard in Resources */,

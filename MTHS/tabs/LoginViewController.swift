@@ -199,6 +199,47 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                 defaults.setObject(studentHomeroom!, forKey: "studentHomeroom")
                                 defaults.setObject(studentNumber, forKey: "studentNumber")
                                 
+                                // now get the student photo
+                                self.loginStatusLabel.text = "Getting your student photo."
+                                
+                                let studentPhotoRequestURL = NSURL (string: "https://my.mths.ca/photos/171684.JPG")
+                                let studentPhotoURLRequest = NSURLRequest(URL: studentPhotoRequestURL!)
+                                let studentPhotoSession = NSURLSession.sharedSession()
+                                var studentPhoto : UIImage = UIImage(named: "MTHS_Logo.jpg")!
+                                let studentPhotoTask = studentPhotoSession.dataTaskWithRequest(studentPhotoURLRequest, completionHandler: { (data, response, error) in
+                                    guard let responseData = data else {
+                                        //print("Error: did not receive data")
+                                        self.errorDuringSigningProcess("Error: did not receive data")
+                                        
+                                        return
+                                    }
+                                    guard error == nil else {
+                                        //print("error calling GET on /posts/1")
+                                        self.errorDuringSigningProcess("error calling GET on /posts/1")
+                                        
+                                        return
+                                    }
+                                    
+                                    do {
+                                        //get image
+                                        let getPhoto = NSData(contentsOfURL: studentPhotoRequestURL!)
+                                        print(getPhoto)
+                                    } catch {
+                                        // handle error
+                                    }
+                                    
+                                })
+                                studentPhotoTask.resume()
+                                
+                                
+
+                            
+                                    
+                                
+                                
+                                
+                                
+                                
                                 // finally done, you have good basic student info
                                 //change over the login buttons
                                 self.loginStatusLabel.text = "Logged in as \(studentName)"
