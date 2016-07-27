@@ -79,6 +79,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         defaults.removeObjectForKey("studentName")
         defaults.removeObjectForKey("studentHomeroom")
         defaults.removeObjectForKey("studentNumber")
+        defaults.removeObjectForKey("studentPhoto")
         
         let alert = UIAlertController(title: "Alert", message: "Unable to get your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -202,10 +203,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                 // now get the student photo
                                 self.loginStatusLabel.text = "Getting your student photo."
                                 
-                                let studentPhotoRequestURL = NSURL (string: "https://my.mths.ca/photos/171684.JPG")
+                                let studentPhotoRequestURL = NSURL (string: "https://my.mths.ca/photos/" + String(studentNumber) + ".JPG")
                                 let studentPhotoURLRequest = NSURLRequest(URL: studentPhotoRequestURL!)
                                 let studentPhotoSession = NSURLSession.sharedSession()
                                 var studentPhoto : UIImage = UIImage(named: "MTHS_Logo.jpg")!
+                              
                                 let studentPhotoTask = studentPhotoSession.dataTaskWithRequest(studentPhotoURLRequest, completionHandler: { (data, response, error) in
                                     guard let responseData = data else {
                                         //print("Error: did not receive data")
@@ -223,9 +225,21 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                     do {
                                         //get image
                                         let getPhoto = NSData(contentsOfURL: studentPhotoRequestURL!)
-                                        print(getPhoto)
+                                        //print(getPhoto)
+                                        studentPhoto = UIImage(data: getPhoto!)!
+                                        print(studentPhoto)
+                                        defaults.setObject(UIImagePNGRepresentation(studentPhoto), forKey: "studentPhoto")
+                                        print("Saved photo")
+                                        
+                                        // test
+                                        
+                                        let bgImage = UIImageView(image: studentPhoto)
+                                        bgImage.frame = CGRectMake(0,0,200,300)
+                                        self.view.addSubview(bgImage)
+                                    
                                     } catch {
                                         // handle error
+                                        print ("An error with the student phtoto")
                                     }
                                     
                                 })
