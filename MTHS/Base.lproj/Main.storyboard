@@ -79,7 +79,7 @@
                         <sections>
                             <tableViewSection id="nCn-uP-W9w">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MorningAnnouncementsCell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD">
                                         <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
@@ -100,7 +100,7 @@
                                             <segue destination="C6B-8q-3nC" kind="showDetail" id="IB6-AV-ZU6"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="lIW-NV-fJY" style="IBUITableViewCellStyleDefault" id="FeI-aR-4eq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SchoolCalendarCell" textLabel="lIW-NV-fJY" style="IBUITableViewCellStyleDefault" id="FeI-aR-4eq">
                                         <rect key="frame" x="0.0" y="108" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FeI-aR-4eq" id="i2s-u9-fY3">
@@ -121,7 +121,7 @@
                                             <segue destination="Epm-Ep-0Im" kind="showDetail" id="tI5-ks-QCN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="1tw-vw-6zr" style="IBUITableViewCellStyleDefault" id="3UM-Zc-UdM">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyScheduleCell" textLabel="1tw-vw-6zr" style="IBUITableViewCellStyleDefault" id="3UM-Zc-UdM">
                                         <rect key="frame" x="0.0" y="152" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3UM-Zc-UdM" id="dSx-QQ-I9X">
@@ -142,7 +142,7 @@
                                             <segue destination="AZO-3F-7uu" kind="showDetail" id="lIM-to-D1j"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="JOd-JI-BOY" style="IBUITableViewCellStyleDefault" id="Isn-y9-afP">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyStudentCardCell" textLabel="JOd-JI-BOY" style="IBUITableViewCellStyleDefault" id="Isn-y9-afP">
                                         <rect key="frame" x="0.0" y="196" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Isn-y9-afP" id="6Gy-SV-tEE">
@@ -163,7 +163,7 @@
                                             <segue destination="M77-Kj-Vwg" kind="showDetail" id="RQT-2t-pPE"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="frR-jx-V8z" style="IBUITableViewCellStyleDefault" id="O6m-LP-OQu">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyLockerCell" textLabel="frR-jx-V8z" style="IBUITableViewCellStyleDefault" id="O6m-LP-OQu">
                                         <rect key="frame" x="0.0" y="240" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O6m-LP-OQu" id="VoJ-lz-q86">
@@ -184,7 +184,7 @@
                                             <segue destination="Gt4-bN-9Py" kind="showDetail" id="Xmv-r7-fKq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="D3Q-uK-Nc7" style="IBUITableViewCellStyleDefault" id="Nd0-r4-Quq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyFeesCell" textLabel="D3Q-uK-Nc7" style="IBUITableViewCellStyleDefault" id="Nd0-r4-Quq">
                                         <rect key="frame" x="0.0" y="284" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nd0-r4-Quq" id="Tax-Gl-YaZ">
@@ -205,7 +205,7 @@
                                             <segue destination="r0f-Fl-wsS" kind="showDetail" id="IsI-Uj-gB9"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="QLs-fl-a7N" style="IBUITableViewCellStyleDefault" id="EJl-uy-WoF">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SchoolTimetableCell" textLabel="QLs-fl-a7N" style="IBUITableViewCellStyleDefault" id="EJl-uy-WoF">
                                         <rect key="frame" x="0.0" y="328" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EJl-uy-WoF" id="o0y-tw-4kU">
@@ -226,7 +226,7 @@
                                             <segue destination="tZ1-uQ-KAX" kind="showDetail" id="s7h-nl-xu4"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Oiu-Zj-XFX" style="IBUITableViewCellStyleDefault" id="rX5-os-eLT">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SchoolAgendaCell" textLabel="Oiu-Zj-XFX" style="IBUITableViewCellStyleDefault" id="rX5-os-eLT">
                                         <rect key="frame" x="0.0" y="372" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rX5-os-eLT" id="rcE-19-2El">
@@ -247,7 +247,7 @@
                                             <segue destination="eRZ-QQ-v0V" kind="showDetail" id="bvL-rN-ktS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="YeV-It-4sA" style="IBUITableViewCellStyleDefault" id="oVC-1W-oUm">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TechHelpCell" textLabel="YeV-It-4sA" style="IBUITableViewCellStyleDefault" id="oVC-1W-oUm">
                                         <rect key="frame" x="0.0" y="416" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oVC-1W-oUm" id="X4B-j5-dfY">
@@ -268,7 +268,7 @@
                                             <segue destination="mUc-5b-cyL" kind="showDetail" id="lye-dQ-UzB"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="IdB-n9-Jvk" style="IBUITableViewCellStyleDefault" id="Zax-Wi-Wbb">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoginCell" textLabel="IdB-n9-Jvk" style="IBUITableViewCellStyleDefault" id="Zax-Wi-Wbb">
                                         <rect key="frame" x="0.0" y="460" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zax-Wi-Wbb" id="JcC-hw-xmo">
@@ -316,16 +316,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlp-8p-GLp">
-                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Rlp-8p-GLp" secondAttribute="trailing" id="6BJ-zl-Bg8"/>
-                            <constraint firstItem="Rlp-8p-GLp" firstAttribute="bottom" secondItem="vN7-Wb-MmB" secondAttribute="top" id="cPk-lU-Phk"/>
-                            <constraint firstItem="Rlp-8p-GLp" firstAttribute="leading" secondItem="6gk-0W-ifs" secondAttribute="leading" id="lvb-QB-kSN"/>
-                            <constraint firstItem="Rlp-8p-GLp" firstAttribute="top" secondItem="QMB-DM-Smt" secondAttribute="bottom" constant="8" id="s9C-qh-GAx"/>
+                            <constraint firstAttribute="trailing" secondItem="Rlp-8p-GLp" secondAttribute="trailing" id="0pw-jH-J0n"/>
+                            <constraint firstItem="Rlp-8p-GLp" firstAttribute="top" secondItem="6gk-0W-ifs" secondAttribute="top" id="9Ff-Na-chX"/>
+                            <constraint firstItem="Rlp-8p-GLp" firstAttribute="bottom" secondItem="vN7-Wb-MmB" secondAttribute="top" id="MfJ-qt-XtD"/>
+                            <constraint firstItem="Rlp-8p-GLp" firstAttribute="leading" secondItem="6gk-0W-ifs" secondAttribute="leading" id="TcQ-ly-xud"/>
                         </constraints>
                     </view>
                     <connections>
@@ -365,7 +365,16 @@
                     <view key="view" contentMode="scaleToFill" id="pVC-EO-j4a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Student Card Background iPad.png" translatesAutoresizingMaskIntoConstraints="NO" id="oOn-cg-PPZ">
+                                <rect key="frame" x="49" y="133" width="502" height="334"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oOn-cg-PPZ" firstAttribute="centerY" secondItem="pVC-EO-j4a" secondAttribute="centerY" id="uzh-cx-i6a"/>
+                            <constraint firstItem="oOn-cg-PPZ" firstAttribute="centerX" secondItem="pVC-EO-j4a" secondAttribute="centerX" id="zus-yS-L8N"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdc-U7-3To" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -448,16 +457,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KL0-UI-AgS">
-                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KL0-UI-AgS" firstAttribute="top" secondItem="UXm-Tx-KwS" secondAttribute="bottom" constant="8" symbolic="YES" id="YqZ-Uh-Pqs"/>
-                            <constraint firstItem="KL0-UI-AgS" firstAttribute="leading" secondItem="SoC-fL-rfa" secondAttribute="leading" id="cJH-3d-nL7"/>
-                            <constraint firstItem="KL0-UI-AgS" firstAttribute="bottom" secondItem="hZX-z5-rcH" secondAttribute="top" id="fY1-nE-1Sc"/>
-                            <constraint firstAttribute="trailing" secondItem="KL0-UI-AgS" secondAttribute="trailing" id="u7L-Qa-t51"/>
+                            <constraint firstItem="KL0-UI-AgS" firstAttribute="leading" secondItem="SoC-fL-rfa" secondAttribute="leading" id="LIy-e0-YcQ"/>
+                            <constraint firstItem="KL0-UI-AgS" firstAttribute="top" secondItem="SoC-fL-rfa" secondAttribute="top" id="Qw0-bX-ws3"/>
+                            <constraint firstItem="KL0-UI-AgS" firstAttribute="bottom" secondItem="hZX-z5-rcH" secondAttribute="top" id="Zw4-hi-ogE"/>
+                            <constraint firstAttribute="trailing" secondItem="KL0-UI-AgS" secondAttribute="trailing" id="uwy-ku-CMi"/>
                         </constraints>
                     </view>
                     <connections>
@@ -505,10 +514,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="SbI-Pe-eWH" secondAttribute="trailing" id="4eD-5A-m40"/>
-                            <constraint firstItem="SbI-Pe-eWH" firstAttribute="top" secondItem="ubG-Xh-1XK" secondAttribute="top" id="5uQ-ET-SBO"/>
-                            <constraint firstItem="SbI-Pe-eWH" firstAttribute="bottom" secondItem="1aN-Ja-WQ6" secondAttribute="top" id="7ev-Ci-6L7"/>
-                            <constraint firstItem="SbI-Pe-eWH" firstAttribute="leading" secondItem="ubG-Xh-1XK" secondAttribute="leading" id="FYU-XO-T5A"/>
+                            <constraint firstItem="SbI-Pe-eWH" firstAttribute="leading" secondItem="ubG-Xh-1XK" secondAttribute="leading" id="PXx-rK-r4a"/>
+                            <constraint firstItem="SbI-Pe-eWH" firstAttribute="bottom" secondItem="1aN-Ja-WQ6" secondAttribute="top" id="aPE-9a-L6N"/>
+                            <constraint firstItem="SbI-Pe-eWH" firstAttribute="top" secondItem="ubG-Xh-1XK" secondAttribute="top" id="cB4-F1-jbw"/>
+                            <constraint firstAttribute="trailing" secondItem="SbI-Pe-eWH" secondAttribute="trailing" id="ec9-Ua-7lM"/>
                         </constraints>
                     </view>
                     <connections>
@@ -594,4 +603,7 @@
             <point key="canvasLocation" x="-45" y="129"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Student Card Background iPad.png" width="502" height="334"/>
+    </resources>
 </document>

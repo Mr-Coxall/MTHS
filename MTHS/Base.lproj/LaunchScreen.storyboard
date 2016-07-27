@@ -16,12 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l1Z-sk-LcI">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.49803921568627452" green="0.68627450980392157" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MTHS_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="AhY-Da-br2">
+                                <rect key="frame" x="180" y="128" width="240" height="344"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Lqe-zg-ZAU"/>
+                                </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.54117647058823526" green="0.73333333333333328" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="AhY-Da-br2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="QeL-Dy-F94"/>
+                            <constraint firstItem="AhY-Da-br2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="abL-rA-AiV"/>
+                            <constraint firstItem="AhY-Da-br2" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="216" id="f3g-ra-opc"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -29,4 +36,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MTHS_Logo.png" width="200" height="300"/>
+    </resources>
 </document>

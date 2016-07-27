@@ -35,6 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         if let userEmailAddress = defaults.stringForKey("userEmailAddress") {
             print("User logger in:")
             print(userEmailAddress)
+        } else {
+            // if user is not logged in, then student info needs to not be accessable
+            // test
+
         }
         
         return true

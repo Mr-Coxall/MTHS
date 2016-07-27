@@ -26,6 +26,14 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        // if user is not logged in, then student info needs to not be accessable
+        // test
+        let myPath = NSIndexPath(forRow: 3, inSection: 0)
+        tableView.cellForRowAtIndexPath(myPath)?.hidden = true
+        tableView.cellForRowAtIndexPath(myPath)?.userInteractionEnabled = false
+        
+        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -84,6 +92,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         return sectionInfo.numberOfObjects
     }
 
+     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject

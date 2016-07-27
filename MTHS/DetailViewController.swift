@@ -34,6 +34,7 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         //self.configureView()
         
+            
         // load morning announcements
         let url = NSURL (string: "https://mother-teresa-hs.blogspot.ca/?m=1");
         let requestObj = NSURLRequest(URL: url!);

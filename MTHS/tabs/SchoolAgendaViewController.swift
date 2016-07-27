@@ -19,8 +19,10 @@ class SchoolAgendaViewController: UIViewController {
         
         // load school timetable
         let url = NSBundle.mainBundle().URLForResource("Student Handbook", withExtension:"pdf")
-        let requestObj = NSURLRequest(URL: url!);
-        schoolAgendaWebView.loadRequest(requestObj);
+        let requestObj = NSURLRequest(URL: url!)
+        schoolAgendaWebView.loadRequest(requestObj)
+        // make it full screen
+        schoolAgendaWebView.scalesPageToFit = true
     }
 
     override func didReceiveMemoryWarning() {
