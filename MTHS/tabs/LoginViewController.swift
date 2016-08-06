@@ -226,7 +226,12 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                         //get image
                                         let getPhoto = NSData(contentsOfURL: studentPhotoRequestURL!)
                                         //print(getPhoto)
-                                        studentPhoto = UIImage(data: getPhoto!)!
+                                        if getPhoto == nil {
+                                            // jsut leave the current generic MTHS logo as the photo
+                                        } else {
+                                            studentPhoto = UIImage(data: getPhoto!)!
+                                        }
+                                        
                                         print(studentPhoto)
                                         defaults.setObject(UIImagePNGRepresentation(studentPhoto), forKey: "studentPhoto")
                                         print("Saved photo")

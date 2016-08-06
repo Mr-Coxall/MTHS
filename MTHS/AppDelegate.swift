@@ -13,10 +13,21 @@ import CoreData
 import Firebase
 
 @UIApplicationMain
+
+
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
+    // the day schedule Global variable
+    var daySchedule: Dictionary<String, Dictionary<String, String>> =
+        [
+            "2016-06-09" : [
+                "HS_day":"1",
+                "7_and_8_day":"5",
+                "type":"regular"
+            ]
+    ]
+    
     var window: UIWindow?
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

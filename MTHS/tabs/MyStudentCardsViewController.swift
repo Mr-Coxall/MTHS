@@ -13,7 +13,7 @@ class MyStudentCardsViewController: UIViewController {
     @IBOutlet weak var studentNameLabel: UILabel!
     @IBOutlet weak var studentNumberLabel: UILabel!
     @IBOutlet weak var studentBarCodeLabel: UILabel!
-
+    @IBOutlet weak var studentPhotoImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +31,15 @@ class MyStudentCardsViewController: UIViewController {
             let studentNumber = defaults.stringForKey("studentNumber")
             studentNumberLabel.text = studentNumber
             
-            //let studentBarCode = "*" + studentNumber! + "*"
-            //studentBarCodeLabel.text = studentBarCode
+            let studentBarCode = "*" + studentNumber! + "*"
+            studentBarCodeLabel.text = studentBarCode
             
+            let studentPhoto = defaults.dataForKey("studentPhoto")
+            studentPhotoImage.image = UIImage(data: studentPhoto!)
+            print(studentPhoto)
         } else {
             // if user is not logged in, then student info needs to not be accessable
-            // test
+            // tsest
             
         }
     }

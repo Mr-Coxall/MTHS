@@ -28,9 +28,16 @@
 		0481FCD11D3480D8000559FF /* Student Handbook.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0481FCCE1D3480D8000559FF /* Student Handbook.pdf */; };
 		0481FCD21D3480D8000559FF /* School Timetables.html in Resources */ = {isa = PBXBuildFile; fileRef = 0481FCCF1D3480D8000559FF /* School Timetables.html */; };
 		0481FCD31D3480D8000559FF /* fre3of9x.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0481FCD01D3480D8000559FF /* fre3of9x.ttf */; };
+		049D6AFD1D542F7B00ADBBF1 /* day_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 049D6AFC1D542F7B00ADBBF1 /* day_schedule.json */; };
 		04B30E111D484736006EC846 /* MTHS_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E101D484736006EC846 /* MTHS_Logo.png */; };
 		04B30E131D484868006EC846 /* Student Card Background iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E121D484868006EC846 /* Student Card Background iPad.png */; };
 		04B30E151D484F6F006EC846 /* MTHS_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E141D484F6F006EC846 /* MTHS_Logo.jpg */; };
+		04EF72C51D56876500D401C4 /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF72C41D56876500D401C4 /* StudentModel.swift */; };
+		04EF72C71D568B3000D401C4 /* StudentSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF72C61D568B3000D401C4 /* StudentSchedule.swift */; };
+		04EF72C91D568D2B00D401C4 /* SchoolClassStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF72C81D568D2B00D401C4 /* SchoolClassStruct.swift */; };
+		04EF72CB1D568F5600D401C4 /* StudentLocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF72CA1D568F5600D401C4 /* StudentLocker.swift */; };
+		04EF72CD1D56908800D401C4 /* SingleStudentFeeStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF72CC1D56908800D401C4 /* SingleStudentFeeStructure.swift */; };
+		04EF72CF1D56913500D401C4 /* StudentFees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF72CE1D56913500D401C4 /* StudentFees.swift */; };
 		837D245668CB23A1BA807703 /* Pods_MTHS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9747D267CB8CFE1FBD96B9B6 /* Pods_MTHS.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,9 +66,16 @@
 		0481FCCE1D3480D8000559FF /* Student Handbook.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Student Handbook.pdf"; sourceTree = "<group>"; };
 		0481FCCF1D3480D8000559FF /* School Timetables.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "School Timetables.html"; sourceTree = "<group>"; };
 		0481FCD01D3480D8000559FF /* fre3of9x.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fre3of9x.ttf; sourceTree = "<group>"; };
+		049D6AFC1D542F7B00ADBBF1 /* day_schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = day_schedule.json; sourceTree = "<group>"; };
 		04B30E101D484736006EC846 /* MTHS_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MTHS_Logo.png; sourceTree = "<group>"; };
 		04B30E121D484868006EC846 /* Student Card Background iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Student Card Background iPad.png"; sourceTree = "<group>"; };
 		04B30E141D484F6F006EC846 /* MTHS_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MTHS_Logo.jpg; sourceTree = "<group>"; };
+		04EF72C41D56876500D401C4 /* StudentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentModel.swift; path = models/StudentModel.swift; sourceTree = "<group>"; };
+		04EF72C61D568B3000D401C4 /* StudentSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentSchedule.swift; path = models/StudentSchedule.swift; sourceTree = "<group>"; };
+		04EF72C81D568D2B00D401C4 /* SchoolClassStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolClassStruct.swift; sourceTree = "<group>"; };
+		04EF72CA1D568F5600D401C4 /* StudentLocker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentLocker.swift; path = models/StudentLocker.swift; sourceTree = "<group>"; };
+		04EF72CC1D56908800D401C4 /* SingleStudentFeeStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleStudentFeeStructure.swift; path = models/SingleStudentFeeStructure.swift; sourceTree = "<group>"; };
+		04EF72CE1D56913500D401C4 /* StudentFees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentFees.swift; path = models/StudentFees.swift; sourceTree = "<group>"; };
 		6825AFFF76AFB66033CE10A0 /* Pods-MTHS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTHS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MTHS/Pods-MTHS.debug.xcconfig"; sourceTree = "<group>"; };
 		9747D267CB8CFE1FBD96B9B6 /* Pods_MTHS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MTHS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D269A37502D25E7D61D5BA17 /* Pods-MTHS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTHS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MTHS/Pods-MTHS.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,8 +114,10 @@
 		0481FC991D311DC6000559FF /* MTHS */ = {
 			isa = PBXGroup;
 			children = (
+				04EF72C31D5686EF00D401C4 /* Controllers */,
+				04EF72C21D5686E100D401C4 /* Models */,
 				0481FCCD1D3480C9000559FF /* files */,
-				0481FCB31D312A7F000559FF /* tabs */,
+				0481FCB31D312A7F000559FF /* Views */,
 				0481FCB11D311E30000559FF /* GoogleService-Info.plist */,
 				0481FCB81D312D06000559FF /* MTHS-Bridging-Header.h */,
 				0481FC9A1D311DC6000559FF /* AppDelegate.swift */,
@@ -116,7 +132,7 @@
 			path = MTHS;
 			sourceTree = "<group>";
 		};
-		0481FCB31D312A7F000559FF /* tabs */ = {
+		0481FCB31D312A7F000559FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				0481FCB91D340533000559FF /* MorningAnnouncementsViewController.swift */,
@@ -130,12 +146,13 @@
 				0481FCC91D340651000559FF /* TechHelpViewController.swift */,
 				0481FCB41D312AA2000559FF /* LoginViewController.swift */,
 			);
-			name = tabs;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		0481FCCD1D3480C9000559FF /* files */ = {
 			isa = PBXGroup;
 			children = (
+				049D6AFC1D542F7B00ADBBF1 /* day_schedule.json */,
 				0481FCCE1D3480D8000559FF /* Student Handbook.pdf */,
 				0481FCCF1D3480D8000559FF /* School Timetables.html */,
 				04B30E101D484736006EC846 /* MTHS_Logo.png */,
@@ -144,6 +161,26 @@
 				0481FCD01D3480D8000559FF /* fre3of9x.ttf */,
 			);
 			name = files;
+			sourceTree = "<group>";
+		};
+		04EF72C21D5686E100D401C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04EF72C41D56876500D401C4 /* StudentModel.swift */,
+				04EF72C61D568B3000D401C4 /* StudentSchedule.swift */,
+				04EF72CE1D56913500D401C4 /* StudentFees.swift */,
+				04EF72C81D568D2B00D401C4 /* SchoolClassStruct.swift */,
+				04EF72CA1D568F5600D401C4 /* StudentLocker.swift */,
+				04EF72CC1D56908800D401C4 /* SingleStudentFeeStructure.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		04EF72C31D5686EF00D401C4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		16722A9922BF66EE64728DBC /* Pods */ = {
@@ -231,6 +268,7 @@
 				0481FCAA1D311DC6000559FF /* LaunchScreen.storyboard in Resources */,
 				0481FCB21D311E30000559FF /* GoogleService-Info.plist in Resources */,
 				04B30E111D484736006EC846 /* MTHS_Logo.png in Resources */,
+				049D6AFD1D542F7B00ADBBF1 /* day_schedule.json in Resources */,
 				04B30E151D484F6F006EC846 /* MTHS_Logo.jpg in Resources */,
 				0481FCD21D3480D8000559FF /* School Timetables.html in Resources */,
 				0481FCA71D311DC6000559FF /* Assets.xcassets in Resources */,
@@ -297,16 +335,22 @@
 				0481FC9B1D311DC6000559FF /* AppDelegate.swift in Sources */,
 				0481FCC41D3405F6000559FF /* MyFeesViewController.swift in Sources */,
 				0481FC9E1D311DC6000559FF /* MTHS.xcdatamodeld in Sources */,
+				04EF72C71D568B3000D401C4 /* StudentSchedule.swift in Sources */,
 				0481FCC21D3405DE000559FF /* MyLockerViewController.swift in Sources */,
 				0481FCA01D311DC6000559FF /* MasterViewController.swift in Sources */,
 				0481FCC81D340636000559FF /* SchoolAgendaViewController.swift in Sources */,
+				04EF72C91D568D2B00D401C4 /* SchoolClassStruct.swift in Sources */,
 				0481FCB51D312AA2000559FF /* LoginViewController.swift in Sources */,
 				0481FCC01D3405C1000559FF /* MyStudentCardsViewController.swift in Sources */,
 				0481FCBA1D340533000559FF /* MorningAnnouncementsViewController.swift in Sources */,
 				0481FCBC1D34054E000559FF /* SchoolCalendarViewController.swift in Sources */,
+				04EF72CD1D56908800D401C4 /* SingleStudentFeeStructure.swift in Sources */,
+				04EF72CF1D56913500D401C4 /* StudentFees.swift in Sources */,
 				0481FCCC1D340703000559FF /* MyScheduleViewController.swift in Sources */,
 				0481FCCA1D340651000559FF /* TechHelpViewController.swift in Sources */,
+				04EF72C51D56876500D401C4 /* StudentModel.swift in Sources */,
 				0481FCA21D311DC6000559FF /* DetailViewController.swift in Sources */,
+				04EF72CB1D568F5600D401C4 /* StudentLocker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
