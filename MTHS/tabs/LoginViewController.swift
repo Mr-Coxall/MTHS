@@ -359,7 +359,72 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         print("Logged out")
     }
     
+    @IBAction func testButtonClick(sender: AnyObject) {
+        //getStudentScheduleFromDatabase(212649)
+        // now need to get the schedule info from Chris's database
+        let studentScheduleRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/student_schedule_json.php?sn="+String(212649))
+        let studentScheduleURLRequest = NSURLRequest(URL: studentScheduleRequestURL!)
+        let studentScheduleSession = NSURLSession.sharedSession()
+        let studentScheduleTask = studentScheduleSession.dataTaskWithRequest(studentScheduleURLRequest, completionHandler: { (studentScheduleData, studentScheduleResponse, studentScheduleError) in
+            guard let scheduleResponseData = studentScheduleData else {
+                print("Error: did not receive data")
+                
+                return
+            }
+            guard studentScheduleError == nil else {
+                print("error calling GET on /posts/1")
+                
+                return
+            }
+            
+            do {
+                let studentScheduleJSONData = try NSJSONSerialization.JSONObjectWithData(scheduleResponseData, options: .MutableContainers) as! NSArray
+                
+                print("Data retrieved from database")
+                
+                var studentSchedule : [SchoolClass] = []
+                
+                if studentScheduleJSONData.count > 0 {
+                    // Loop through Json objects
+                    for singleClass in studentScheduleJSONData {
+                        if var item = singleClass as? [String: AnyObject] {
+                            //if let teacher: String = String(item.removeValueForKey("teacher")) {
+                                
+                            //}
+                            //let semester = item["semester"]!
+                            //let period = item["period"]!
+                            //let course = item["course"]!
+                            //let room = item["room"]!
+                            //let teacher = item["teacher"]!
+                            
+                            let aSingleClass = SchoolClass(semester: String(item["semester"]!),
+                                period: Int(item["period"]! as! String),
+                                course: String(item["course"]!),
+                                room: String(item["room"]!),
+                                teacher: String(item["teacher"]!))
+                            //print(aSingleClass)
+                            studentSchedule.append(aSingleClass)
+                        }
+                    }
+                    //print(studentSchedule)
+
+                }
+                
+            } catch {
+                // handle error
+            }
+            
+        })
+        
+        studentScheduleTask.resume()
+        
+        
+        //return studentSchedule
+    }
     
+    func getStudentScheduleFromDatabase(studentNumber: Int) {
+
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

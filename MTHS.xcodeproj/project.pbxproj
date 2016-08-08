@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0424FBEE1D581D53000DEDB6 /* GetStudentSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0424FBED1D581D53000DEDB6 /* GetStudentSchedule.swift */; };
 		0481FC9B1D311DC6000559FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481FC9A1D311DC6000559FF /* AppDelegate.swift */; };
 		0481FC9E1D311DC6000559FF /* MTHS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0481FC9C1D311DC6000559FF /* MTHS.xcdatamodeld */; };
 		0481FCA01D311DC6000559FF /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481FC9F1D311DC6000559FF /* MasterViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0424FBED1D581D53000DEDB6 /* GetStudentSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetStudentSchedule.swift; path = NetworkControllers/GetStudentSchedule.swift; sourceTree = "<group>"; };
 		0481FC971D311DC6000559FF /* MTHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0481FC9A1D311DC6000559FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0481FC9D1D311DC6000559FF /* MTHS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MTHS.xcdatamodel; sourceTree = "<group>"; };
@@ -114,10 +116,10 @@
 		0481FC991D311DC6000559FF /* MTHS */ = {
 			isa = PBXGroup;
 			children = (
-				04EF72C31D5686EF00D401C4 /* Controllers */,
+				04EF72C31D5686EF00D401C4 /* NetworkControllers */,
 				04EF72C21D5686E100D401C4 /* Models */,
 				0481FCCD1D3480C9000559FF /* files */,
-				0481FCB31D312A7F000559FF /* Views */,
+				0481FCB31D312A7F000559FF /* ViewControllers */,
 				0481FCB11D311E30000559FF /* GoogleService-Info.plist */,
 				0481FCB81D312D06000559FF /* MTHS-Bridging-Header.h */,
 				0481FC9A1D311DC6000559FF /* AppDelegate.swift */,
@@ -132,7 +134,7 @@
 			path = MTHS;
 			sourceTree = "<group>";
 		};
-		0481FCB31D312A7F000559FF /* Views */ = {
+		0481FCB31D312A7F000559FF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				0481FCB91D340533000559FF /* MorningAnnouncementsViewController.swift */,
@@ -146,7 +148,7 @@
 				0481FCC91D340651000559FF /* TechHelpViewController.swift */,
 				0481FCB41D312AA2000559FF /* LoginViewController.swift */,
 			);
-			name = Views;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		0481FCCD1D3480C9000559FF /* files */ = {
@@ -176,11 +178,12 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		04EF72C31D5686EF00D401C4 /* Controllers */ = {
+		04EF72C31D5686EF00D401C4 /* NetworkControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0424FBED1D581D53000DEDB6 /* GetStudentSchedule.swift */,
 			);
-			name = Controllers;
+			name = NetworkControllers;
 			sourceTree = "<group>";
 		};
 		16722A9922BF66EE64728DBC /* Pods */ = {
@@ -339,6 +342,7 @@
 				0481FCC21D3405DE000559FF /* MyLockerViewController.swift in Sources */,
 				0481FCA01D311DC6000559FF /* MasterViewController.swift in Sources */,
 				0481FCC81D340636000559FF /* SchoolAgendaViewController.swift in Sources */,
+				0424FBEE1D581D53000DEDB6 /* GetStudentSchedule.swift in Sources */,
 				04EF72C91D568D2B00D401C4 /* SchoolClassStruct.swift in Sources */,
 				0481FCB51D312AA2000559FF /* LoginViewController.swift in Sources */,
 				0481FCC01D3405C1000559FF /* MyStudentCardsViewController.swift in Sources */,

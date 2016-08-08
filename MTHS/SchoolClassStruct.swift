@@ -10,8 +10,7 @@
 
 struct SchoolClass {
     var semester : String!
-    var day : Int!
-    var period : Int
+    var period : Int!
     var course : String!
     var room : String!
     var teacher : String!
