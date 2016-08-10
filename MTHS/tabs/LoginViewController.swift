@@ -149,7 +149,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 print("Logged in started")
                 
                 // now need to get the user info from Chris's database
-                self.loginStatusLabel.text = "Getting your student information from database."
+                self.loginStatusLabel.text = "Getting your student information " + "\r\n" + "from database." + "\r\n" + "This will take some time." + "\r\n" + "Please wait."
                 
                 let studentInfoRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/student_json.php?email="+fullEmail!)
                 let studentInfoURLRequest = NSURLRequest(URL: studentInfoRequestURL!)
@@ -171,7 +171,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                     do {
                         let jsonData = try NSJSONSerialization.JSONObjectWithData(responseData, options: .MutableContainers) as! NSArray
                         // Do Stuff
-                        self.loginStatusLabel.text = "Pasring your data retrieved from database."
                         print("Data retrieved from database")
                         
                         if jsonData.count==1 {
@@ -193,7 +192,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                 let studentName = studentNameArr[1] + " " + studentNameArr[0]
 
                                 // add info to user defaults
-                                self.loginStatusLabel.text = "Saving your student data."
                                 print("Saving to user defaults")
                                 let defaults = NSUserDefaults.standardUserDefaults()
                                 defaults.setObject(studentName, forKey: "studentName")
@@ -201,63 +199,24 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                 defaults.setObject(studentNumber, forKey: "studentNumber")
                                 
                                 // now get the student photo
-                                self.loginStatusLabel.text = "Getting your student photo."
-                                
-                                let studentPhotoRequestURL = NSURL (string: "https://my.mths.ca/photos/" + String(studentNumber) + ".JPG")
-                                let studentPhotoURLRequest = NSURLRequest(URL: studentPhotoRequestURL!)
-                                let studentPhotoSession = NSURLSession.sharedSession()
-                                var studentPhoto : UIImage = UIImage(named: "MTHS_Logo.jpg")!
-                              
-                                let studentPhotoTask = studentPhotoSession.dataTaskWithRequest(studentPhotoURLRequest, completionHandler: { (data, response, error) in
-                                    guard let responseData = data else {
-                                        //print("Error: did not receive data")
-                                        self.errorDuringSigningProcess("Error: did not receive data")
-                                        
-                                        return
-                                    }
-                                    guard error == nil else {
-                                        //print("error calling GET on /posts/1")
-                                        self.errorDuringSigningProcess("error calling GET on /posts/1")
-                                        
-                                        return
-                                    }
+                                self.getStudentPhotoFromDatabase(studentNumber){ (responseStudentPhoto:UIImage?) in
                                     
-                                    do {
-                                        //get image
-                                        let getPhoto = NSData(contentsOfURL: studentPhotoRequestURL!)
-                                        //print(getPhoto)
-                                        if getPhoto == nil {
-                                            // jsut leave the current generic MTHS logo as the photo
-                                        } else {
-                                            studentPhoto = UIImage(data: getPhoto!)!
-                                        }
-                                        
-                                        print(studentPhoto)
-                                        defaults.setObject(UIImagePNGRepresentation(studentPhoto), forKey: "studentPhoto")
-                                        print("Saved photo")
-                                        
-                                        // test
-                                        
-                                        let bgImage = UIImageView(image: studentPhoto)
-                                        bgImage.frame = CGRectMake(0,0,200,300)
-                                        self.view.addSubview(bgImage)
+                                    //print(responseStudentPhoto)
+                                    let bgImage = UIImageView(image: responseStudentPhoto)
+                                    bgImage.frame = CGRectMake(0,0,200,300)
+                                    self.view.addSubview(bgImage)
                                     
-                                    } catch {
-                                        // handle error
-                                        print ("An error with the student phtoto")
-                                    }
+                                    defaults.setObject(UIImagePNGRepresentation(responseStudentPhoto!), forKey: "studentPhoto")
+                                }
+                                
+                                // now get student schedule
+                                self.getStudentScheduleFromDatabase(studentNumber){ (responseStudentSchedule:[SchoolClass]?) in
                                     
-                                })
-                                studentPhotoTask.resume()
-                                
-                                
-
-                            
-                                    
-                                
-                                
-                                
-                                
+                                    print(responseStudentSchedule)
+                                    let temp = responseStudentSchedule![1].semester
+                                    print(temp)
+  
+                                }
                                 
                                 // finally done, you have good basic student info
                                 //change over the login buttons
@@ -267,7 +226,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                 
                                 // all done
                                 self.gettingDataActivityIndicator.stopAnimating()
-                                print("All done getting student data")
+                                print("All done getting student data.")
                             } else {
                                 print("error getting student data")
                                 self.errorDuringSigningProcess("error getting student data")
@@ -355,14 +314,23 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         defaults.removeObjectForKey("studentName")
         defaults.removeObjectForKey("studentHomeroom")
         defaults.removeObjectForKey("studentNumber")
+        defaults.removeObjectForKey("studentPhoto")
         
         print("Logged out")
     }
     
-    @IBAction func testButtonClick(sender: AnyObject) {
+    
+    
+    // function to get back all the students classes
+    func getStudentScheduleFromDatabase(studentNumber: Int, onCompletion: [SchoolClass] -> ()) {
         //getStudentScheduleFromDatabase(212649)
         // now need to get the schedule info from Chris's database
-        let studentScheduleRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/student_schedule_json.php?sn="+String(212649))
+        
+        var studentSchedule : [SchoolClass] = []
+        // could not get this working for some reason!!!!
+        //var studentSchedule : StudentSchedule
+        
+        let studentScheduleRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/student_schedule_json.php?sn="+String(studentNumber))
         let studentScheduleURLRequest = NSURLRequest(URL: studentScheduleRequestURL!)
         let studentScheduleSession = NSURLSession.sharedSession()
         let studentScheduleTask = studentScheduleSession.dataTaskWithRequest(studentScheduleURLRequest, completionHandler: { (studentScheduleData, studentScheduleResponse, studentScheduleError) in
@@ -382,38 +350,28 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 
                 print("Data retrieved from database")
                 
-                var studentSchedule : [SchoolClass] = []
-                
                 if studentScheduleJSONData.count > 0 {
                     // Loop through Json objects
                     for singleClass in studentScheduleJSONData {
                         if var item = singleClass as? [String: AnyObject] {
-                            //if let teacher: String = String(item.removeValueForKey("teacher")) {
-                                
-                            //}
-                            //let semester = item["semester"]!
-                            //let period = item["period"]!
-                            //let course = item["course"]!
-                            //let room = item["room"]!
-                            //let teacher = item["teacher"]!
-                            
-                            let aSingleClass = SchoolClass(semester: String(item["semester"]!),
-                                period: Int(item["period"]! as! String),
+                            let aSingleClass = SchoolClass(
+                                semester: String(item["semester"]!),
+                                period: String(item["period"]! as! String),
                                 course: String(item["course"]!),
                                 room: String(item["room"]!),
                                 teacher: String(item["teacher"]!))
                             //print(aSingleClass)
                             studentSchedule.append(aSingleClass)
+                            
                         }
                     }
                     //print(studentSchedule)
-
+                    onCompletion(studentSchedule)
                 }
                 
             } catch {
                 // handle error
             }
-            
         })
         
         studentScheduleTask.resume()
@@ -422,9 +380,111 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         //return studentSchedule
     }
     
-    func getStudentScheduleFromDatabase(studentNumber: Int) {
-
+    // function to get back student's photo
+    func getStudentPhotoFromDatabase(studentNumber: Int, onCompletion: UIImage -> ()) {
+        //getStudentScheduleFromDatabase(212649)
+        // now need to get the photo info from Chris's database
+        
+        let studentPhotoRequestURL = NSURL (string: "https://my.mths.ca/photos/" + String(studentNumber) + ".JPG")
+        let studentPhotoURLRequest = NSURLRequest(URL: studentPhotoRequestURL!)
+        let studentPhotoSession = NSURLSession.sharedSession()
+        var studentPhoto : UIImage = UIImage(named: "MTHS_Logo.jpg")!
+        
+        let studentPhotoTask = studentPhotoSession.dataTaskWithRequest(studentPhotoURLRequest, completionHandler: { (data, response, error) in
+            guard let responseData = data else {
+                //print("Error: did not receive data")
+                self.errorDuringSigningProcess("Error: did not receive data")
+                
+                return
+            }
+            guard error == nil else {
+                //print("error calling GET on /posts/1")
+                self.errorDuringSigningProcess("error calling GET on /posts/1")
+                
+                return
+            }
+            
+            do {
+                //get image
+                let getPhoto = NSData(contentsOfURL: studentPhotoRequestURL!)
+                //print(getPhoto)
+                if getPhoto == nil {
+                    // just leave the current generic MTHS logo as the photo
+                } else {
+                    studentPhoto = UIImage(data: getPhoto!)!
+                }
+                
+                onCompletion(studentPhoto)
+                
+            } catch {
+                // handle error
+                print ("An error with the student phtoto")
+            }
+            
+        })
+        studentPhotoTask.resume()
     }
+    
+    /*
+    // function to get back all the student's fees
+    func getStudentFeesFromDatabase(studentNumber: Int, onCompletion: [StudentFee] -> ()) {
+        //getStudentFeesFromDatabase(12014)
+        // now need to get the schedule info from Chris's database
+        
+        var studentFees : [StudentFee] = []
+        // could not get this working for StudentFees class for some reason!!!!
+
+        
+        // need to create this.
+        let studentScheduleRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/student_schedule_json.php?sn="+String(studentNumber))
+        let studentScheduleURLRequest = NSURLRequest(URL: studentScheduleRequestURL!)
+        let studentScheduleSession = NSURLSession.sharedSession()
+        let studentScheduleTask = studentScheduleSession.dataTaskWithRequest(studentScheduleURLRequest, completionHandler: { (studentScheduleData, studentScheduleResponse, studentScheduleError) in
+            guard let scheduleResponseData = studentScheduleData else {
+                print("Error: did not receive data")
+                
+                return
+            }
+            guard studentScheduleError == nil else {
+                print("error calling GET on /posts/1")
+                
+                return
+            }
+            
+            do {
+                let studentScheduleJSONData = try NSJSONSerialization.JSONObjectWithData(scheduleResponseData, options: .MutableContainers) as! NSArray
+                
+                print("Data retrieved from database")
+                
+                if studentScheduleJSONData.count > 0 {
+                    // Loop through Json objects
+                    for singleClass in studentScheduleJSONData {
+                        if var item = singleClass as? [String: AnyObject] {
+                            let aSingleClass = SchoolClass(semester: String(item["semester"]!),
+                                period: Int(item["period"]! as! String),
+                                course: String(item["course"]!),
+                                room: String(item["room"]!),
+                                teacher: String(item["teacher"]!))
+                            //print(aSingleClass)
+                            studentSchedule.append(aSingleClass)
+                            
+                        }
+                    }
+                    //print(studentSchedule)
+                    onCompletion(studentSchedule)
+                }
+                
+            } catch {
+                // handle error
+            }
+        })
+     
+        studentScheduleTask.resume()
+        
+        
+        //return studentSchedule
+    }
+ */
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
