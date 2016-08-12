@@ -29,30 +29,62 @@ class MyScheduleViewController: UITableViewController {
             // logged in
             print("Loged in as:" + studentName)
             
+            let studentHomeroom = defaults.stringForKey("studentHomeroom")
             let studentAnyObjectOfClasses = defaults.objectForKey("studentSchedule")
             studentArrayOfClasses = (studentAnyObjectOfClasses as! NSArray) as! Array
             
-            for tempClass in studentArrayOfClasses {
-                //print(tempClass)
-                switch UIDevice.currentDevice().userInterfaceIdiom {
-                case .Phone:
-                    // It's an iPhone
-                    tableRowStringArray.append("Semester: " + tempClass["semester"]! +
-                        " Period: " + tempClass["period"]! + "\r\n" +
-                        "Course: " + tempClass["course"]! +
-                        " Room: " + tempClass["room"]!)
-                case .Pad:
-                    // It's an iPad
-                    tableRowStringArray.append("Semester: " + tempClass["semester"]! +
-                        " Period: " + tempClass["period"]! +
-                        " Course: " + tempClass["course"]! +
-                        " Room: " + tempClass["room"]! +
-                        " Teacher: " + tempClass["teacher"]!)
-                default:
-                    // Uh, oh! What could it be?
-                    print("You are in trouble!!")
+            // it is different if you are in HS or 7&8
+            let lengthOfHomeroom = studentHomeroom!.characters.count
+            //print(lengthOfHomeroom)
+            
+            if lengthOfHomeroom != 5  {
+                // 7&8 homeroom
+                
+                for tempClass in studentArrayOfClasses {
+                    //print(tempClass)
+                    switch UIDevice.currentDevice().userInterfaceIdiom {
+                    case .Phone:
+                        // It's an iPhone
+                        tableRowStringArray.append("Day: " + tempClass["day"]! +
+                            " Period: " + tempClass["period"]! + "\r\n" +
+                            "Course: " + tempClass["course"]!)
+                    case .Pad:
+                        // It's an iPad
+                        tableRowStringArray.append("Day: " + tempClass["day"]! +
+                            " Period: " + tempClass["period"]! + "\r\n" +
+                            "Course: " + tempClass["course"]!)
+                    default:
+                        // Uh, oh! What could it be?
+                        print("You are in trouble!!")
+                    }
+                    
                 }
                 
+            } else {
+                // HS homeroom
+
+                for tempClass in studentArrayOfClasses {
+                    //print(tempClass)
+                    switch UIDevice.currentDevice().userInterfaceIdiom {
+                    case .Phone:
+                        // It's an iPhone
+                        tableRowStringArray.append("Semester: " + tempClass["semester"]! +
+                            " Period: " + tempClass["period"]! + "\r\n" +
+                            "Course: " + tempClass["course"]! +
+                            " Room: " + tempClass["room"]!)
+                    case .Pad:
+                        // It's an iPad
+                        tableRowStringArray.append("Semester: " + tempClass["semester"]! +
+                            " Period: " + tempClass["period"]! +
+                            " Course: " + tempClass["course"]! +
+                            " Room: " + tempClass["room"]! +
+                            " Teacher: " + tempClass["teacher"]!)
+                    default:
+                        // Uh, oh! What could it be?
+                        print("You are in trouble!!")
+                    }
+                    
+                }
             }
 
         } else {

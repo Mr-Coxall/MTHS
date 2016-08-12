@@ -199,38 +199,72 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                 self.getStudentPhotoFromDatabase(studentNumber){ (responseStudentPhoto:UIImage?) in
                                     
                                     //print(responseStudentPhoto)
-                                    let bgImage = UIImageView(image: responseStudentPhoto)
-                                    bgImage.frame = CGRectMake(0,0,200,300)
-                                    self.view.addSubview(bgImage)
+                                    //let bgImage = UIImageView(image: responseStudentPhoto)
+                                    //bgImage.frame = CGRectMake(0,0,200,300)
+                                    //self.view.addSubview(bgImage)
                                     
                                     defaults.setObject(UIImagePNGRepresentation(responseStudentPhoto!), forKey: "studentPhoto")
                                 }
                                 
                                 // now get student schedule
-                                self.getStudentScheduleFromDatabase(studentNumber){ (responseStudentSchedule:[SchoolClass]?) in
-                                    
-                                    print(responseStudentSchedule)
-                                    
-                                    // an array of dictionaries
-                                    var tempArrayOfClasses = [[String: String]()]
-                             
-                                    for tempClass in responseStudentSchedule! {
-                                        var tempClassDictonary: [String:String] = [:]
-                                        tempClassDictonary.updateValue(tempClass.course, forKey: "course")
-                                        tempClassDictonary.updateValue(tempClass.period, forKey: "period")
-                                        tempClassDictonary.updateValue(tempClass.room, forKey: "room")
-                                        tempClassDictonary.updateValue(tempClass.semester, forKey: "semester")
-                                        tempClassDictonary.updateValue(tempClass.teacher, forKey: "teacher")
-                                        tempArrayOfClasses.append(tempClassDictonary)
-                                    }
-
-                                    // remove the first element, since it is empty
-                                    tempArrayOfClasses.removeAtIndex(0)
-                                    defaults.setObject(tempArrayOfClasses, forKey: "studentSchedule")
-                                    print(tempArrayOfClasses)
-  
-                                }
                                 
+                                // it is different if you are in HS or 7&8
+                                let lengthOfHomeroom = studentHomeroom!.characters.count
+                                print(lengthOfHomeroom)
+                                
+                                if lengthOfHomeroom != 5  {
+                                    // 7&8 homeroom
+                                    
+                                    self.get7And8StudentScheduleFromDatabase(studentHomeroom!){ (responseStudentSchedule:[SchoolClass]?) in
+                                        
+                                        print(responseStudentSchedule)
+                                        
+                                        // an array of dictionaries
+                                        var tempArrayOfClasses = [[String: String]()]
+                                        
+                                        for tempClass in responseStudentSchedule! {
+                                            var tempClassDictonary: [String:String] = [:]
+                                            tempClassDictonary.updateValue(tempClass.course, forKey: "course")
+                                            tempClassDictonary.updateValue(tempClass.period, forKey: "period")
+                                            tempClassDictonary.updateValue(tempClass.day, forKey: "day")
+
+                                            tempArrayOfClasses.append(tempClassDictonary)
+                                        }
+                                        
+                                        // remove the first element, since it is empty
+                                        tempArrayOfClasses.removeAtIndex(0)
+                                        defaults.setObject(tempArrayOfClasses, forKey: "studentSchedule")
+                                        print(tempArrayOfClasses)
+                                        
+                                    }
+                                } else {
+                                    // HS homeroom
+                                    
+                                    self.getHSStudentScheduleFromDatabase(studentNumber){ (responseStudentSchedule:[SchoolClass]?) in
+                                        
+                                        print(responseStudentSchedule)
+                                        
+                                        // an array of dictionaries
+                                        var tempArrayOfClasses = [[String: String]()]
+                                        
+                                        for tempClass in responseStudentSchedule! {
+                                            var tempClassDictonary: [String:String] = [:]
+                                            tempClassDictonary.updateValue(tempClass.course, forKey: "course")
+                                            tempClassDictonary.updateValue(tempClass.period, forKey: "period")
+                                            tempClassDictonary.updateValue(tempClass.room, forKey: "room")
+                                            tempClassDictonary.updateValue(tempClass.semester, forKey: "semester")
+                                            tempClassDictonary.updateValue(tempClass.teacher, forKey: "teacher")
+                                            tempArrayOfClasses.append(tempClassDictonary)
+                                        }
+                                        
+                                        // remove the first element, since it is empty
+                                        tempArrayOfClasses.removeAtIndex(0)
+                                        defaults.setObject(tempArrayOfClasses, forKey: "studentSchedule")
+                                        print(tempArrayOfClasses)
+                                        
+                                    }
+                                }
+
                                 // finally done, you have good basic student info
                                 //change over the login buttons
                                 self.loginStatusLabel.text = "Logged in as \(studentName)"
@@ -335,8 +369,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     
     
-    // function to get back all the students classes
-    func getStudentScheduleFromDatabase(studentNumber: Int, onCompletion: [SchoolClass] -> ()) {
+    // function to get back all the students classes if you are in HS
+    func getHSStudentScheduleFromDatabase(studentNumber: Int, onCompletion: [SchoolClass] -> ()) {
         //getStudentScheduleFromDatabase(212649)
         // now need to get the schedule info from Chris's database
         
@@ -373,7 +407,67 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                 period: String(item["period"]! as! String),
                                 course: String(item["course"]!),
                                 room: String(item["room"]!),
-                                teacher: String(item["teacher"]!))
+                                teacher: String(item["teacher"]!),
+                                day: String(" "))
+                            //print(aSingleClass)
+                            studentSchedule.append(aSingleClass)
+                            
+                        }
+                    }
+                    //print(studentSchedule)
+                    onCompletion(studentSchedule)
+                }
+                
+            } catch {
+                // handle error
+            }
+        })
+        
+        studentScheduleTask.resume()
+        
+        
+        //return studentSchedule
+    }
+    
+    // function to get back all the students classes if you are in HS
+    func get7And8StudentScheduleFromDatabase(studentHomeroom: String, onCompletion: [SchoolClass] -> ()) {
+        // now need to get the schedule info from Chris's database
+        
+        var studentSchedule : [SchoolClass] = []
+        // could not get this working for some reason!!!!
+        //var studentSchedule : StudentSchedule
+        
+        let studentScheduleRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/schedule_7_and_8_json.php?homeroom="+String(studentHomeroom))
+        let studentScheduleURLRequest = NSURLRequest(URL: studentScheduleRequestURL!)
+        let studentScheduleSession = NSURLSession.sharedSession()
+        let studentScheduleTask = studentScheduleSession.dataTaskWithRequest(studentScheduleURLRequest, completionHandler: { (studentScheduleData, studentScheduleResponse, studentScheduleError) in
+            guard let scheduleResponseData = studentScheduleData else {
+                print("Error: did not receive data")
+                
+                return
+            }
+            guard studentScheduleError == nil else {
+                print("error calling GET on /posts/1")
+                
+                return
+            }
+            
+            do {
+                let studentScheduleJSONData = try NSJSONSerialization.JSONObjectWithData(scheduleResponseData, options: .MutableContainers) as! NSArray
+                
+                print("Data retrieved from database")
+                
+                if studentScheduleJSONData.count > 0 {
+                    // Loop through Json objects
+                    for singleClass in studentScheduleJSONData {
+                        if var item = singleClass as? [String: AnyObject] {
+                            let aSingleClass = SchoolClass(
+                                semester: String(""),
+                                period: String(item["period"]! as! String),
+                                course: String(item["course"]!),
+                                room: String(""),
+                                teacher: String(""),
+                                day: String(item["day"]!))
                             //print(aSingleClass)
                             studentSchedule.append(aSingleClass)
                             

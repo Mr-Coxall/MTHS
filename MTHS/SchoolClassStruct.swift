@@ -14,6 +14,6 @@ struct SchoolClass {
     var course : String!
     var room : String!
     var teacher : String!
-    //var day : String!  // for 7&8 students
+    var day : String!  // for 7&8 students
     
 }
