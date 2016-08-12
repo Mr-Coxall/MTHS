@@ -80,6 +80,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         defaults.removeObjectForKey("studentHomeroom")
         defaults.removeObjectForKey("studentNumber")
         defaults.removeObjectForKey("studentPhoto")
+        defaults.removeObjectForKey("studentSchedule")
         
         let alert = UIAlertController(title: "Alert", message: "Unable to get your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -213,8 +214,24 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                 self.getStudentScheduleFromDatabase(studentNumber){ (responseStudentSchedule:[SchoolClass]?) in
                                     
                                     print(responseStudentSchedule)
-                                    let temp = responseStudentSchedule![1].semester
-                                    print(temp)
+                                    
+                                    // an array of dictionaries
+                                    var tempArrayOfClasses = [[String: String]()]
+                             
+                                    for tempClass in responseStudentSchedule! {
+                                        var tempClassDictonary: [String:String] = [:]
+                                        tempClassDictonary.updateValue(tempClass.course, forKey: "course")
+                                        tempClassDictonary.updateValue(tempClass.period, forKey: "period")
+                                        tempClassDictonary.updateValue(tempClass.room, forKey: "room")
+                                        tempClassDictonary.updateValue(tempClass.semester, forKey: "semester")
+                                        tempClassDictonary.updateValue(tempClass.teacher, forKey: "teacher")
+                                        tempArrayOfClasses.append(tempClassDictonary)
+                                    }
+
+                                    // remove the first element, since it is empty
+                                    tempArrayOfClasses.removeAtIndex(0)
+                                    defaults.setObject(tempArrayOfClasses, forKey: "studentSchedule")
+                                    print(tempArrayOfClasses)
   
                                 }
                                 
@@ -315,6 +332,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         defaults.removeObjectForKey("studentHomeroom")
         defaults.removeObjectForKey("studentNumber")
         defaults.removeObjectForKey("studentPhoto")
+        defaults.removeObjectForKey("studentSchedule")
         
         print("Logged out")
     }
