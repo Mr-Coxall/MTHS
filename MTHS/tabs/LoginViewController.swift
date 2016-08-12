@@ -39,20 +39,12 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             loginStatusLabel.alpha = 0.0
         }
         
-        // make the Login Status label invisible
-        gettingDataActivityIndicator.hidesWhenStopped = true
-        gettingDataActivityIndicator.stopAnimating()
-        
-        // Use Firebase library to configure APIs
-        FIRApp.configure()
-        
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
-
+        
         // Do any additional setup after loading the view.
         //let button = GIDSignInButton(frame: CGRectMake(0, 0, 100, 100))
         //button.center = view.center
-        
         //view.addSubview(button)
         
         // Google Signin
@@ -60,6 +52,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         
         // Uncomment to automatically sign in the user.
         //GIDSignIn.sharedInstance().signInSilently()
+ 
+        // make the Login Status label invisible
+        gettingDataActivityIndicator.hidesWhenStopped = true
+        gettingDataActivityIndicator.stopAnimating()
 
     }
     
