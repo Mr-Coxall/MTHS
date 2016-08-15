@@ -34,7 +34,6 @@
 		049587441D616BEE0065690B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049587421D616BEE0065690B /* MainInterface.storyboard */; };
 		049587481D616BEE0065690B /* Day Schedule.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0495873C1D616BEE0065690B /* Day Schedule.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0495874E1D6170600065690B /* day_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 0495874D1D6170600065690B /* day_schedule.json */; };
-		049D6AFD1D542F7B00ADBBF1 /* day_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 049D6AFC1D542F7B00ADBBF1 /* day_schedule.json */; };
 		04B30E111D484736006EC846 /* MTHS_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E101D484736006EC846 /* MTHS_Logo.png */; };
 		04B30E131D484868006EC846 /* Student Card Background iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E121D484868006EC846 /* Student Card Background iPad.png */; };
 		04B30E151D484F6F006EC846 /* MTHS_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E141D484F6F006EC846 /* MTHS_Logo.jpg */; };
@@ -103,7 +102,6 @@
 		049587431D616BEE0065690B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		049587451D616BEE0065690B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0495874D1D6170600065690B /* day_schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = day_schedule.json; sourceTree = "<group>"; };
-		049D6AFC1D542F7B00ADBBF1 /* day_schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = day_schedule.json; sourceTree = "<group>"; };
 		04B30E101D484736006EC846 /* MTHS_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MTHS_Logo.png; sourceTree = "<group>"; };
 		04B30E121D484868006EC846 /* Student Card Background iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Student Card Background iPad.png"; sourceTree = "<group>"; };
 		04B30E141D484F6F006EC846 /* MTHS_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MTHS_Logo.jpg; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 		0481FCCD1D3480C9000559FF /* files */ = {
 			isa = PBXGroup;
 			children = (
-				049D6AFC1D542F7B00ADBBF1 /* day_schedule.json */,
 				0481FCCE1D3480D8000559FF /* Student Handbook.pdf */,
 				0481FCCF1D3480D8000559FF /* School Timetables.html */,
 				04B30E101D484736006EC846 /* MTHS_Logo.png */,
@@ -352,7 +349,6 @@
 				0481FCAA1D311DC6000559FF /* LaunchScreen.storyboard in Resources */,
 				0481FCB21D311E30000559FF /* GoogleService-Info.plist in Resources */,
 				04B30E111D484736006EC846 /* MTHS_Logo.png in Resources */,
-				049D6AFD1D542F7B00ADBBF1 /* day_schedule.json in Resources */,
 				04B30E151D484F6F006EC846 /* MTHS_Logo.jpg in Resources */,
 				0481FCD21D3480D8000559FF /* School Timetables.html in Resources */,
 				0481FCA71D311DC6000559FF /* Assets.xcassets in Resources */,

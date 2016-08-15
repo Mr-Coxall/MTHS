@@ -48,18 +48,38 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                         
                         let order = NSCalendar.currentCalendar().compareDate(currentDate, toDate: day!, toUnitGranularity: .Day)
                         
-                        
-                        switch order {
-                        case .OrderedDescending:
-                            let x = 0
-                            //print("DESCENDING")
-                        case .OrderedAscending:
-                            //print("ASCENDING")
-                            let y = 0
-                        case .OrderedSame:
-                            print("SAME")
+                        if order == NSComparisonResult.OrderedSame {
                             print(day!)
+                            // this is today, so update today widget label
+                            
+                            let hsDayAsString = singleDay["HS_day"] as? String
+                            let sevenAnd8DayAsString = singleDay["7_and_8_day"] as? String
+                            
+                            let hsDayAsInt = Int(hsDayAsString!)
+                            let sevenAnd8DayAsInt = Int(sevenAnd8DayAsString!)
+                            
+                            var widgetString: String
+                            if hsDayAsInt != nil && sevenAnd8DayAsInt != nil{
+                                // just 2 regular day numbers
+                                
+                                widgetString = "Day \(hsDayAsInt!) - HS & Day \(sevenAnd8DayAsInt!) - 7 & 8"
+                            }
+                            else if hsDayAsInt == nil && sevenAnd8DayAsInt != nil {
+                                // HS has exams
+                                
+                                widgetString = "\(hsDayAsString!) & Day \(sevenAnd8DayAsInt!) - 7 & 8"
+                            } else {
+                                // both are text, so just show 1
+                                
+                                widgetString = hsDayAsString!
+                            }
+                            
+                            dayScheduleLabel.text = widgetString
+                            
+                            // since we are done, leave the for loop
+                            break
                         }
+                        
                     }
                     
                 } catch {
@@ -70,8 +90,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             }
         }
         
-        // update the widget label
-        dayScheduleLabel.text = "Hello, World!"
     }
     
     override func didReceiveMemoryWarning() {

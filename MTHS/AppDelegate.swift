@@ -16,11 +16,6 @@ import Firebase
 
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
-
-    // the day schedule Global variable
-    // not sure how to make an empty array of dictionaries!!
-    var daySchedule: [Dictionary<String, String>] =
-        [["day":"2000-01-01","HS_day":"0","7_and_8_day":"0","type":"regular"]]
     
     var window: UIWindow?
 
@@ -49,26 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             // if user is not logged in, then student info needs to not be accessable
             // test
 
-        }
-        
-        // load the day schedule JSON file into memory
-        if let path = NSBundle.mainBundle().pathForResource("day_schedule", ofType: "json") {
-            do {
-                let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                do {
-                    //let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                    let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-                    
-                    for singleDay in jsonResult {
-                        daySchedule.append(singleDay as! Dictionary<String, String>)
-                    }
-
-                } catch {
-                    print("Error")
-                }
-            } catch {
-                print("Error")
-            }
         }
         
         return true
