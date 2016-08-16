@@ -149,7 +149,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 // now need to get the user info from Chris's database
                 self.loginStatusLabel.text = "Getting your student information " + "\r\n" + "from database." + "\r\n" + "This will take some time." + "\r\n" + "Please wait."
                 
-                let studentInfoRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/student_json.php?email="+fullEmail!)
+                let studentInfoRequestURL = NSURL (string: "https://my.mths.ca/mths_ios/student_json.php?email="+fullEmail!)
                 let studentInfoURLRequest = NSURLRequest(URL: studentInfoRequestURL!)
                 let session = NSURLSession.sharedSession()
                 let task = session.dataTaskWithRequest(studentInfoURLRequest, completionHandler: { (data, response, error) in
@@ -389,7 +389,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         // could not get this working for some reason!!!!
         //var studentSchedule : StudentSchedule
         
-        let studentScheduleRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/student_schedule_json.php?sn="+String(studentNumber))
+        let studentScheduleRequestURL = NSURL (string: "https://my.mths.ca/mths_ios/student_schedule_json.php?sn="+String(studentNumber))
         let studentScheduleURLRequest = NSURLRequest(URL: studentScheduleRequestURL!)
         let studentScheduleSession = NSURLSession.sharedSession()
         let studentScheduleTask = studentScheduleSession.dataTaskWithRequest(studentScheduleURLRequest, completionHandler: { (studentScheduleData, studentScheduleResponse, studentScheduleError) in
@@ -448,7 +448,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         // could not get this working for some reason!!!!
         //var studentSchedule : StudentSchedule
         
-        let studentScheduleRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/schedule_7_and_8_json.php?homeroom="+String(studentHomeroom))
+        let studentScheduleRequestURL = NSURL (string: "https://my.mths.ca/mths_ios/schedule_7_and_8_json.php?homeroom="+String(studentHomeroom))
         let studentScheduleURLRequest = NSURLRequest(URL: studentScheduleRequestURL!)
         let studentScheduleSession = NSURLSession.sharedSession()
         let studentScheduleTask = studentScheduleSession.dataTaskWithRequest(studentScheduleURLRequest, completionHandler: { (studentScheduleData, studentScheduleResponse, studentScheduleError) in
@@ -550,7 +550,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         
         //var studentLockerNumber: String = "nil"
         
-        let studentLockerRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/locker_and_combination_numbers_json.php?sn="+String(studentNumber))
+        let studentLockerRequestURL = NSURL (string: "https://my.mths.ca/mths_ios/locker_info_json.php?sn="+String(studentNumber))
         let studentLockerURLRequest = NSURLRequest(URL: studentLockerRequestURL!)
         let studentLockerSession = NSURLSession.sharedSession()
         let studentLockerTask = studentLockerSession.dataTaskWithRequest(studentLockerURLRequest, completionHandler: { (studentLockerData, studentScheduleResponse, studentScheduleError) in
@@ -575,9 +575,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                     
                     let tempLockerNumberAsString = String(tempDictionary["locker_number"])
                     let tempLockerCombinationAsString = String(tempDictionary["combo"])
-                    //let tempLockerLocationAsString = String(tempDictionary["location"])
+                    let tempLockerLocationAsString = String(tempDictionary["location"])
                     
-                    let studentLockerInfo = ["locker_number" : tempLockerNumberAsString, "combo" : tempLockerCombinationAsString]
+                    let studentLockerInfo = ["locker_number" : tempLockerNumberAsString, "combo" : tempLockerCombinationAsString, "location" : tempLockerLocationAsString]
                     
                     onCompletion(studentLockerInfo)
                 }
