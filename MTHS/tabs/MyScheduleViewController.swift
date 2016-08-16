@@ -48,6 +48,7 @@ class MyScheduleViewController: UITableViewController {
                         tableRowStringArray.append("Day: " + tempClass["day"]! +
                             " Period: " + tempClass["period"]! + "\r\n" +
                             "Course: " + tempClass["course"]!)
+                        self.tableView.rowHeight = 75.0
                     case .Pad:
                         // It's an iPad
                         tableRowStringArray.append("Day: " + tempClass["day"]! +
@@ -71,7 +72,9 @@ class MyScheduleViewController: UITableViewController {
                         tableRowStringArray.append("Semester: " + tempClass["semester"]! +
                             " Period: " + tempClass["period"]! + "\r\n" +
                             "Course: " + tempClass["course"]! +
-                            " Room: " + tempClass["room"]!)
+                            " Room: " + tempClass["room"]! + "\r\n" +
+                            "Teacher: " + tempClass["teacher"]!)
+                        self.tableView.rowHeight = 75.0
                     case .Pad:
                         // It's an iPad
                         tableRowStringArray.append("Semester: " + tempClass["semester"]! +
@@ -115,6 +118,7 @@ class MyScheduleViewController: UITableViewController {
         
         // make it multi-lines
         cell.textLabel?.numberOfLines = 3
+        //self.tableView.rowHeight = 75.0
         cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         
         cell.textLabel?.text = tableRowStringArray[indexPath.row]
