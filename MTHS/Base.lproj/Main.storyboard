@@ -405,8 +405,32 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your locker is near room: xxx" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0p-gE-uPa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="It is near room: xxx" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0p-gE-uPa">
                                 <rect key="frame" x="167" y="99" width="267" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(place a - between numbers)  (ex. 14-36-43)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BS2-Xt-6LE">
+                                <rect key="frame" x="105" y="529" width="390" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dY6-HP-9wH">
+                                <rect key="frame" x="238" y="491" width="124" height="30"/>
+                                <state key="normal" title="Save Combination"/>
+                                <connections>
+                                    <action selector="saveCombination:" destination="Gt4-bN-9Py" eventType="touchUpInside" id="4BD-o9-5jI"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Place your lock combination here." textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2RE-Gz-0WN">
+                                <rect key="frame" x="175" y="453" width="250" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your current saved combination is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNz-cK-CKm">
+                                <rect key="frame" x="131" y="424" width="338" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -414,18 +438,30 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="dY6-HP-9wH" firstAttribute="top" secondItem="2RE-Gz-0WN" secondAttribute="bottom" constant="8" id="8AZ-Fd-Fw0"/>
                             <constraint firstItem="Ez6-ec-gSp" firstAttribute="centerX" secondItem="wRp-T8-9cy" secondAttribute="centerX" id="8BO-JM-lhY"/>
                             <constraint firstItem="PHs-1q-ORM" firstAttribute="centerX" secondItem="wRp-T8-9cy" secondAttribute="centerX" id="Auc-uR-9PL"/>
                             <constraint firstItem="Ez6-ec-gSp" firstAttribute="centerY" secondItem="wRp-T8-9cy" secondAttribute="centerY" id="B79-b0-zKN"/>
+                            <constraint firstItem="2RE-Gz-0WN" firstAttribute="top" secondItem="YNz-cK-CKm" secondAttribute="bottom" constant="8" id="EvA-HR-ReF"/>
+                            <constraint firstItem="Pqn-5q-zqj" firstAttribute="top" secondItem="BS2-Xt-6LE" secondAttribute="bottom" constant="20" id="FNL-zf-IC3"/>
+                            <constraint firstItem="BS2-Xt-6LE" firstAttribute="centerX" secondItem="wRp-T8-9cy" secondAttribute="centerX" id="KyJ-7g-SU4"/>
                             <constraint firstItem="Q0p-gE-uPa" firstAttribute="centerX" secondItem="wRp-T8-9cy" secondAttribute="centerX" id="WLu-wD-Jrj"/>
+                            <constraint firstItem="BS2-Xt-6LE" firstAttribute="top" secondItem="dY6-HP-9wH" secondAttribute="bottom" constant="8" id="Xxn-nN-LOs"/>
+                            <constraint firstItem="dY6-HP-9wH" firstAttribute="centerX" secondItem="wRp-T8-9cy" secondAttribute="centerX" id="dse-QL-9dL"/>
                             <constraint firstItem="PHs-1q-ORM" firstAttribute="top" secondItem="sSR-Cw-Kgr" secondAttribute="bottom" constant="50" id="hNl-Fp-MWk"/>
+                            <constraint firstItem="2RE-Gz-0WN" firstAttribute="centerX" secondItem="wRp-T8-9cy" secondAttribute="centerX" id="mWz-Ks-Bgb"/>
                             <constraint firstItem="Q0p-gE-uPa" firstAttribute="top" secondItem="PHs-1q-ORM" secondAttribute="bottom" constant="8" id="tvM-BK-xia"/>
+                            <constraint firstItem="YNz-cK-CKm" firstAttribute="centerX" secondItem="wRp-T8-9cy" secondAttribute="centerX" id="x7Y-Oh-teD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="combinationReminder" destination="BS2-Xt-6LE" id="S3Q-dB-lEQ"/>
                         <outlet property="lockerInfoLabel" destination="Ez6-ec-gSp" id="eUu-3e-Tb4"/>
                         <outlet property="lockerLocationLabel" destination="Q0p-gE-uPa" id="APY-4Y-MfQ"/>
                         <outlet property="lockerNumberLabel" destination="PHs-1q-ORM" id="lFM-DV-dZT"/>
+                        <outlet property="saveCombinationButton" destination="dY6-HP-9wH" id="Nrs-xg-YE9"/>
+                        <outlet property="savedCombinationLabel" destination="YNz-cK-CKm" id="vwL-L4-VIf"/>
+                        <outlet property="savedCombinationTextbox" destination="2RE-Gz-0WN" id="BIW-RP-Qc1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rL8-ZU-XHu" userLabel="First Responder" sceneMemberID="firstResponder"/>

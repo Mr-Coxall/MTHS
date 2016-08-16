@@ -13,6 +13,11 @@ class MyLockerViewController: UIViewController {
     @IBOutlet weak var lockerInfoLabel: UILabel!
     @IBOutlet weak var lockerNumberLabel: UILabel!
     @IBOutlet weak var lockerLocationLabel: UILabel!
+    @IBOutlet weak var savedCombinationLabel: UILabel!
+    @IBOutlet weak var savedCombinationTextbox: UITextField!
+    @IBOutlet weak var saveCombinationButton: UIButton!
+    @IBOutlet weak var combinationReminder: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +41,20 @@ class MyLockerViewController: UIViewController {
             
             lockerNumberLabel.alpha = 0.0
             lockerLocationLabel.alpha = 0.0
-            
+            savedCombinationLabel.alpha = 0.0
+            savedCombinationTextbox.alpha = 0.0
+            saveCombinationButton.alpha = 0.0
+            combinationReminder.alpha = 0.0
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func saveCombination(sender: AnyObject) {
     }
     
 
