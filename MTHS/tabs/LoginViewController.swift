@@ -32,7 +32,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             loginButton.enabled = false
             logoutButton.enabled = true
             loginStatusLabel.alpha = 1.0
-            self.loginStatusLabel.text = "Logged in as \(studentName)"
+            self.loginStatusLabel.text = "Logged in as\(studentName)"
         } else {
             loginButton.enabled = true
             logoutButton.enabled = false
@@ -77,6 +77,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         defaults.removeObjectForKey("studentNumber")
         defaults.removeObjectForKey("studentPhoto")
         defaults.removeObjectForKey("studentSchedule")
+        defaults.removeObjectForKey("studentLockerInfo")
         
         let alert = UIAlertController(title: "Alert", message: "Unable to get your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -260,9 +261,18 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                         // remove the first element, since it is empty
                                         tempArrayOfClasses.removeAtIndex(0)
                                         defaults.setObject(tempArrayOfClasses, forKey: "studentSchedule")
-                                        print(tempArrayOfClasses)
+                                        //print(tempArrayOfClasses)
                                         
                                     }
+                                }
+                                
+                                // now get locker info
+                                
+                                self.getLockerFromDatabase(studentNumber){ (responseLockerInfo:[String:String]?) in
+                                    
+                                    print(responseLockerInfo)
+                                    
+                                    defaults.setObject(responseLockerInfo, forKey: "studentLockerInfo")
                                 }
 
                                 // finally done, you have good basic student info
@@ -363,6 +373,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         defaults.removeObjectForKey("studentNumber")
         defaults.removeObjectForKey("studentPhoto")
         defaults.removeObjectForKey("studentSchedule")
+        defaults.removeObjectForKey("studentLockerInfo")
         
         print("Logged out")
     }
@@ -531,6 +542,55 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             
         })
         studentPhotoTask.resume()
+    }
+    
+    // function to get back all the students classes if you are in HS
+    func getLockerFromDatabase(studentNumber: Int, onCompletion: [String:String] -> ()) {
+        // now need to get the locker info from Chris's database
+        
+        //var studentLockerNumber: String = "nil"
+        
+        let studentLockerRequestURL = NSURL (string: "https://my.mths.ca/patrick/mths_ios/locker_and_combination_numbers_json.php?sn="+String(studentNumber))
+        let studentLockerURLRequest = NSURLRequest(URL: studentLockerRequestURL!)
+        let studentLockerSession = NSURLSession.sharedSession()
+        let studentLockerTask = studentLockerSession.dataTaskWithRequest(studentLockerURLRequest, completionHandler: { (studentLockerData, studentScheduleResponse, studentScheduleError) in
+            guard let scheduleResponseData = studentLockerData else {
+                print("Error: did not receive data")
+                
+                return
+            }
+            guard studentScheduleError == nil else {
+                print("error calling GET on /posts/1")
+                
+                return
+            }
+            
+            do {
+                let studentLockerJSONData = try NSJSONSerialization.JSONObjectWithData(scheduleResponseData, options: .MutableContainers) as! NSArray
+                
+                print("Data retrieved from database")
+                
+                if studentLockerJSONData.count == 1 {
+                    let tempDictionary = studentLockerJSONData[0]
+                    
+                    let tempLockerNumberAsString = String(tempDictionary["locker_number"])
+                    let tempLockerCombinationAsString = String(tempDictionary["combo"])
+                    //let tempLockerLocationAsString = String(tempDictionary["location"])
+                    
+                    let studentLockerInfo = ["locker_number" : tempLockerNumberAsString, "combo" : tempLockerCombinationAsString]
+                    
+                    onCompletion(studentLockerInfo)
+                }
+                
+            } catch {
+                // handle error
+            }
+        })
+        
+        studentLockerTask.resume()
+        
+        
+        //return studentSchedule
     }
     
     /*
