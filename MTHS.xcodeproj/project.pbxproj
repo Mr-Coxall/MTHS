@@ -315,7 +315,6 @@
 					};
 					0495873B1D616BEE0065690B = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 7674WVY5W7;
 					};
 				};
 			};
@@ -661,6 +660,7 @@
 				0495874A1D616BEE0065690B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

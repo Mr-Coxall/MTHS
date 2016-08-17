@@ -147,8 +147,29 @@
                                             <segue destination="23J-HI-E04" kind="showDetail" id="bYu-8k-hZi"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoginCell" textLabel="h3s-XI-mXp" style="IBUITableViewCellStyleDefault" id="aMy-Ii-n51" userLabel="LockerCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoginCell" textLabel="Bsg-8d-FKL" style="IBUITableViewCellStyleDefault" id="Ra4-48-WUR" userLabel="StudentCardCell">
                                         <rect key="frame" x="0.0" y="196" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ra4-48-WUR" id="Nha-77-tqF">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="My Student Card" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bsg-8d-FKL">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="M77-Kj-Vwg" kind="showDetail" id="tBX-J0-XU0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoginCell" textLabel="h3s-XI-mXp" style="IBUITableViewCellStyleDefault" id="aMy-Ii-n51" userLabel="LockerCell">
+                                        <rect key="frame" x="0.0" y="240" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aMy-Ii-n51" id="iyQ-Eh-i9I">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -169,7 +190,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SchoolTimetableCell" textLabel="QLs-fl-a7N" style="IBUITableViewCellStyleDefault" id="EJl-uy-WoF">
-                                        <rect key="frame" x="0.0" y="240" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="284" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EJl-uy-WoF" id="o0y-tw-4kU">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -190,7 +211,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SchoolAgendaCell" textLabel="Oiu-Zj-XFX" style="IBUITableViewCellStyleDefault" id="rX5-os-eLT">
-                                        <rect key="frame" x="0.0" y="284" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="328" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rX5-os-eLT" id="rcE-19-2El">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -211,7 +232,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TechHelpCell" textLabel="YeV-It-4sA" style="IBUITableViewCellStyleDefault" id="oVC-1W-oUm">
-                                        <rect key="frame" x="0.0" y="328" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="372" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oVC-1W-oUm" id="X4B-j5-dfY">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -232,7 +253,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoginCell" textLabel="IdB-n9-Jvk" style="IBUITableViewCellStyleDefault" id="Zax-Wi-Wbb">
-                                        <rect key="frame" x="0.0" y="372" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="416" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zax-Wi-Wbb" id="JcC-hw-xmo">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -347,21 +368,51 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="115" y="509" width="187" height="28"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*171684*" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fis-0T-wwI">
                                 <rect key="frame" x="283" y="354" width="250" height="50"/>
                                 <fontDescription key="fontDescription" name="New" family="New" pointSize="65"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="345" y="444" width="250" height="50"/>
+                                </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MTHS_Logo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="0cx-fp-At0">
                                 <rect key="frame" x="71" y="154" width="86" height="128"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="123" y="236" width="86" height="128"/>
+                                </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Student Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvD-he-iJM">
                                 <rect key="frame" x="345" y="424" width="127" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="407" y="513" width="127" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJV-pJ-uei">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="464" y="319" width="67" height="32"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MwF-Kr-gUV">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="319" y="319" width="71" height="32"/>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -369,9 +420,22 @@
                             <constraint firstItem="oOn-cg-PPZ" firstAttribute="centerY" secondItem="pVC-EO-j4a" secondAttribute="centerY" id="uzh-cx-i6a"/>
                             <constraint firstItem="oOn-cg-PPZ" firstAttribute="centerX" secondItem="pVC-EO-j4a" secondAttribute="centerX" id="zus-yS-L8N"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="fJV-pJ-uei"/>
+                                <exclude reference="MwF-Kr-gUV"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="fJV-pJ-uei"/>
+                                <include reference="MwF-Kr-gUV"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="studentBarCodeLabel" destination="fis-0T-wwI" id="Q7G-X4-1sh"/>
+                        <outlet property="studentCardBackground" destination="oOn-cg-PPZ" id="Kgm-O3-BbQ"/>
                         <outlet property="studentNameLabel" destination="UVs-H3-PSl" id="mbD-3G-CsK"/>
                         <outlet property="studentNumberLabel" destination="yvD-he-iJM" id="1FZ-GR-cri"/>
                         <outlet property="studentPhotoImage" destination="0cx-fp-At0" id="20b-Eb-ast"/>
@@ -379,7 +443,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdc-U7-3To" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3609" y="-630"/>
+            <point key="canvasLocation" x="3588" y="-630"/>
         </scene>
         <!--My Locker View Controller-->
         <scene sceneID="6Dd-vV-9qY">

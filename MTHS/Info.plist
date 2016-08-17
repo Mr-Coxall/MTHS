@@ -38,7 +38,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.07.09</string>
+	<string>0.3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
