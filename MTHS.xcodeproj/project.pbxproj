@@ -26,7 +26,6 @@
 		0481FCC81D340636000559FF /* SchoolAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481FCC71D340636000559FF /* SchoolAgendaViewController.swift */; };
 		0481FCCA1D340651000559FF /* TechHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481FCC91D340651000559FF /* TechHelpViewController.swift */; };
 		0481FCCC1D340703000559FF /* MyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481FCCB1D340703000559FF /* MyScheduleViewController.swift */; };
-		0481FCD11D3480D8000559FF /* Student Handbook.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0481FCCE1D3480D8000559FF /* Student Handbook.pdf */; };
 		0481FCD21D3480D8000559FF /* School Timetables.html in Resources */ = {isa = PBXBuildFile; fileRef = 0481FCCF1D3480D8000559FF /* School Timetables.html */; };
 		0481FCD31D3480D8000559FF /* fre3of9x.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0481FCD01D3480D8000559FF /* fre3of9x.ttf */; };
 		0495873E1D616BEE0065690B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0495873D1D616BEE0065690B /* NotificationCenter.framework */; };
@@ -37,6 +36,8 @@
 		04B30E111D484736006EC846 /* MTHS_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E101D484736006EC846 /* MTHS_Logo.png */; };
 		04B30E131D484868006EC846 /* Student Card Background iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E121D484868006EC846 /* Student Card Background iPad.png */; };
 		04B30E151D484F6F006EC846 /* MTHS_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E141D484F6F006EC846 /* MTHS_Logo.jpg */; };
+		04E4390B1D64197D004FCB3F /* Student Card Background iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E4390A1D64197D004FCB3F /* Student Card Background iPhone.png */; };
+		04E4390D1D65FD7C004FCB3F /* Student Handbook.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 04E4390C1D65FD7C004FCB3F /* Student Handbook.pdf */; };
 		04EF72C51D56876500D401C4 /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF72C41D56876500D401C4 /* StudentModel.swift */; };
 		04EF72C71D568B3000D401C4 /* StudentSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF72C61D568B3000D401C4 /* StudentSchedule.swift */; };
 		04EF72C91D568D2B00D401C4 /* SchoolClassStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF72C81D568D2B00D401C4 /* SchoolClassStruct.swift */; };
@@ -93,7 +94,6 @@
 		0481FCC71D340636000559FF /* SchoolAgendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolAgendaViewController.swift; path = tabs/SchoolAgendaViewController.swift; sourceTree = "<group>"; };
 		0481FCC91D340651000559FF /* TechHelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TechHelpViewController.swift; path = tabs/TechHelpViewController.swift; sourceTree = "<group>"; };
 		0481FCCB1D340703000559FF /* MyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyScheduleViewController.swift; path = tabs/MyScheduleViewController.swift; sourceTree = "<group>"; };
-		0481FCCE1D3480D8000559FF /* Student Handbook.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Student Handbook.pdf"; sourceTree = "<group>"; };
 		0481FCCF1D3480D8000559FF /* School Timetables.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "School Timetables.html"; sourceTree = "<group>"; };
 		0481FCD01D3480D8000559FF /* fre3of9x.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fre3of9x.ttf; sourceTree = "<group>"; };
 		0495873C1D616BEE0065690B /* Day Schedule.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Day Schedule.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +105,8 @@
 		04B30E101D484736006EC846 /* MTHS_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MTHS_Logo.png; sourceTree = "<group>"; };
 		04B30E121D484868006EC846 /* Student Card Background iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Student Card Background iPad.png"; sourceTree = "<group>"; };
 		04B30E141D484F6F006EC846 /* MTHS_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MTHS_Logo.jpg; sourceTree = "<group>"; };
+		04E4390A1D64197D004FCB3F /* Student Card Background iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Student Card Background iPhone.png"; sourceTree = "<group>"; };
+		04E4390C1D65FD7C004FCB3F /* Student Handbook.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Student Handbook.pdf"; sourceTree = "<group>"; };
 		04EF72C41D56876500D401C4 /* StudentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentModel.swift; path = models/StudentModel.swift; sourceTree = "<group>"; };
 		04EF72C61D568B3000D401C4 /* StudentSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentSchedule.swift; path = models/StudentSchedule.swift; sourceTree = "<group>"; };
 		04EF72C81D568D2B00D401C4 /* SchoolClassStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolClassStruct.swift; sourceTree = "<group>"; };
@@ -197,11 +199,12 @@
 		0481FCCD1D3480C9000559FF /* files */ = {
 			isa = PBXGroup;
 			children = (
-				0481FCCE1D3480D8000559FF /* Student Handbook.pdf */,
+				04E4390C1D65FD7C004FCB3F /* Student Handbook.pdf */,
 				0481FCCF1D3480D8000559FF /* School Timetables.html */,
 				04B30E101D484736006EC846 /* MTHS_Logo.png */,
 				04B30E141D484F6F006EC846 /* MTHS_Logo.jpg */,
 				04B30E121D484868006EC846 /* Student Card Background iPad.png */,
+				04E4390A1D64197D004FCB3F /* Student Card Background iPhone.png */,
 				0481FCD01D3480D8000559FF /* fre3of9x.ttf */,
 			);
 			name = files;
@@ -343,13 +346,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B30E131D484868006EC846 /* Student Card Background iPad.png in Resources */,
-				0481FCD11D3480D8000559FF /* Student Handbook.pdf in Resources */,
 				0481FCD31D3480D8000559FF /* fre3of9x.ttf in Resources */,
+				04E4390D1D65FD7C004FCB3F /* Student Handbook.pdf in Resources */,
 				0481FCAA1D311DC6000559FF /* LaunchScreen.storyboard in Resources */,
 				0481FCB21D311E30000559FF /* GoogleService-Info.plist in Resources */,
 				04B30E111D484736006EC846 /* MTHS_Logo.png in Resources */,
 				04B30E151D484F6F006EC846 /* MTHS_Logo.jpg in Resources */,
 				0481FCD21D3480D8000559FF /* School Timetables.html in Resources */,
+				04E4390B1D64197D004FCB3F /* Student Card Background iPhone.png in Resources */,
 				0481FCA71D311DC6000559FF /* Assets.xcassets in Resources */,
 				0481FCA51D311DC6000559FF /* Main.storyboard in Resources */,
 			);

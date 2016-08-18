@@ -396,6 +396,12 @@
                                     <rect key="frame" x="407" y="513" width="127" height="21"/>
                                 </variation>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Student Card Background iPhone.png" translatesAutoresizingMaskIntoConstraints="NO" id="rlx-9h-fgp">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="36" y="233" width="329" height="499"/>
+                                </variation>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJV-pJ-uei">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -422,8 +428,14 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="rlx-9h-fgp"/>
                                 <exclude reference="fJV-pJ-uei"/>
                                 <exclude reference="MwF-Kr-gUV"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="rlx-9h-fgp"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -590,12 +602,18 @@ help request.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yaG-cb-nuK">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yaG-cb-nuK">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yaG-cb-nuK" firstAttribute="top" secondItem="GIh-EV-P0a" secondAttribute="top" id="QPp-3N-czZ"/>
+                            <constraint firstItem="yaG-cb-nuK" firstAttribute="leading" secondItem="GIh-EV-P0a" secondAttribute="leading" id="YBE-wt-WQd"/>
+                            <constraint firstItem="yaG-cb-nuK" firstAttribute="bottom" secondItem="k80-QA-WrL" secondAttribute="top" id="eIh-2F-4m3"/>
+                            <constraint firstAttribute="trailing" secondItem="yaG-cb-nuK" secondAttribute="trailing" id="kqX-Yl-0Di"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="schoolAgendaWebView" destination="yaG-cb-nuK" id="OOj-B0-QV5"/>
@@ -767,5 +785,6 @@ help request.</string>
     <resources>
         <image name="MTHS_Logo.jpg" width="200" height="300"/>
         <image name="Student Card Background iPad.png" width="502" height="334"/>
+        <image name="Student Card Background iPhone.png" width="334" height="502"/>
     </resources>
 </document>
