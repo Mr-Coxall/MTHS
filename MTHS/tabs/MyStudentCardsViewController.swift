@@ -14,11 +14,19 @@ class MyStudentCardsViewController: UIViewController {
     @IBOutlet weak var studentNumberLabel: UILabel!
     @IBOutlet weak var studentBarCodeLabel: UILabel!
     @IBOutlet weak var studentPhotoImage: UIImageView!
+    @IBOutlet weak var year2017Label: UILabel!
+    @IBOutlet weak var year2016Label: UILabel!
+    @IBOutlet weak var studentCardBackground: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // check size of the device
+        let screenSize = UIScreen.mainScreen().nativeBounds
+        print(screenSize)
         
         // check if user is logged in
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -36,7 +44,18 @@ class MyStudentCardsViewController: UIViewController {
             
             let studentPhoto = defaults.dataForKey("studentPhoto")
             studentPhotoImage.image = UIImage(data: studentPhoto!)
-            print(studentPhoto)
+            //print(studentPhoto)
+            
+            // so ... if it is an iPad Pro 12.9", then I need to move around the student card
+            let iPadProLargeScreenSize = CGRect(x:0.0, y: 0.0, width: 2048.0, height: 2732.0)
+            if iPadProLargeScreenSize == screenSize {
+                // 12.9" iPadPro
+                //print("Here")
+                let rotate = CGAffineTransformMakeRotation(CGFloat(0.0))
+                let translate = CGAffineTransformTranslate(CGAffineTransformIdentity, -145.0, -130.0)
+                studentCardBackground.transform = CGAffineTransformConcat(rotate, translate)
+            }
+            
         } else {
             // if user is not logged in, then student info needs to not be accessable
             // tsest
