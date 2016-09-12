@@ -52,27 +52,32 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                             print(day!)
                             // this is today, so update today widget label
                             
+//                            let hsDayAsString = singleDay["HS_day"] as? String
+//                            let sevenAnd8DayAsString = singleDay["7_and_8_day"] as? String
+//                            
+//                            let hsDayAsInt = Int(hsDayAsString!)
+//                            let sevenAnd8DayAsInt = Int(sevenAnd8DayAsString!)
+//                            
+//                            var widgetString: String
+//                            if hsDayAsInt != nil && sevenAnd8DayAsInt != nil{
+//                                // just 2 regular day numbers
+//                                
+//                                widgetString = "Day \(hsDayAsInt!) - HS & Day \(sevenAnd8DayAsInt!) - 7 & 8"
+//                            }
+//                            else if hsDayAsInt == nil && sevenAnd8DayAsInt != nil {
+//                                // HS has exams
+//                                
+//                                widgetString = "\(hsDayAsString!) & Day \(sevenAnd8DayAsInt!) - 7 & 8"
+//                            } else {
+//                                // both are text, so just show 1
+//                                
+//                                widgetString = hsDayAsString!
+//                            }
+                            
+                            // 7&8 have moved to Days of the week, so we no longer need the above
                             let hsDayAsString = singleDay["HS_day"] as? String
-                            let sevenAnd8DayAsString = singleDay["7_and_8_day"] as? String
-                            
                             let hsDayAsInt = Int(hsDayAsString!)
-                            let sevenAnd8DayAsInt = Int(sevenAnd8DayAsString!)
-                            
-                            var widgetString: String
-                            if hsDayAsInt != nil && sevenAnd8DayAsInt != nil{
-                                // just 2 regular day numbers
-                                
-                                widgetString = "Day \(hsDayAsInt!) - HS & Day \(sevenAnd8DayAsInt!) - 7 & 8"
-                            }
-                            else if hsDayAsInt == nil && sevenAnd8DayAsInt != nil {
-                                // HS has exams
-                                
-                                widgetString = "\(hsDayAsString!) & Day \(sevenAnd8DayAsInt!) - 7 & 8"
-                            } else {
-                                // both are text, so just show 1
-                                
-                                widgetString = hsDayAsString!
-                            }
+                            let widgetString = "HS - Day \(hsDayAsInt!)"
                             
                             dayScheduleLabel.text = widgetString
                             

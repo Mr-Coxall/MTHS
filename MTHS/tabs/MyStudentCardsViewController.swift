@@ -17,7 +17,7 @@ class MyStudentCardsViewController: UIViewController {
     @IBOutlet weak var year2017Label: UILabel!
     @IBOutlet weak var year2016Label: UILabel!
     @IBOutlet weak var studentCardBackground: UIImageView!
-    
+    @IBOutlet weak var iPhoneWarningLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +60,30 @@ class MyStudentCardsViewController: UIViewController {
             // if user is not logged in, then student info needs to not be accessable
             // tsest
             
+        }
+        
+        // check if it is an iPad or iPhone, to rotate stuff
+        switch UIDevice.currentDevice().userInterfaceIdiom {
+        case .Phone:
+            // It's an iPhone
+            //print("iPhone")
+
+            studentNameLabel.hidden = true
+            studentNumberLabel.hidden = true
+            studentBarCodeLabel.hidden = true
+            studentPhotoImage.hidden = true
+            year2017Label.hidden = true
+            year2016Label.hidden = true
+            studentCardBackground.hidden = true
+            
+        case .Pad:
+            // It's an iPad
+            //print("iPad")
+            iPhoneWarningLabel.hidden = true
+            
+        default:
+            // Uh, oh! What could it be?
+            print("You are in trouble!")
         }
     }
 
