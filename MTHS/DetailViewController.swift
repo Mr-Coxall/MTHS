@@ -36,8 +36,8 @@ class DetailViewController: UIViewController {
         
             
         // load morning announcements
-        let url = NSURL (string: "https://mother-teresa-hs.blogspot.ca/?m=1");
-        let requestObj = NSURLRequest(URL: url!);
+        let url = URL (string: "https://mother-teresa-hs.blogspot.ca/?m=1");
+        let requestObj = URLRequest(url: url!);
         detailedViewWebView.loadRequest(requestObj);
     }
 

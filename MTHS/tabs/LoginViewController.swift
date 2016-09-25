@@ -25,17 +25,17 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         super.viewDidLoad()
         
         // check if you are currently logged in and have data stored locally
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let studentName = defaults.stringForKey("studentName") {
+        let defaults = UserDefaults.standard
+        if let studentName = defaults.string(forKey: "studentName") {
             print("User logger in:")
             print(studentName)
-            loginButton.enabled = false
-            logoutButton.enabled = true
+            loginButton.isEnabled = false
+            logoutButton.isEnabled = true
             loginStatusLabel.alpha = 1.0
             self.loginStatusLabel.text = "Logged in as\(studentName)"
         } else {
-            loginButton.enabled = true
-            logoutButton.enabled = false
+            loginButton.isEnabled = true
+            logoutButton.isEnabled = false
             loginStatusLabel.alpha = 0.0
         }
         
@@ -60,32 +60,32 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     }
     
     // Error during signing
-    func errorDuringSigningProcess(errorThatOccured: String) {
+    func errorDuringSigningProcess(_ errorThatOccured: String) {
         // something has gone wrong during signing,
         // so set everything back as if you are not signined in
         
         print(errorThatOccured)
-        self.loginButton.enabled = false
-        self.logoutButton.enabled = true
+        self.loginButton.isEnabled = false
+        self.logoutButton.isEnabled = true
         self.gettingDataActivityIndicator.stopAnimating()
         self.loginStatusLabel.text = "Error occured while getting your student data, please contact the librarian."
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.removeObjectForKey("userEmailAddress")
-        defaults.removeObjectForKey("studentName")
-        defaults.removeObjectForKey("studentHomeroom")
-        defaults.removeObjectForKey("studentNumber")
-        defaults.removeObjectForKey("studentPhoto")
-        defaults.removeObjectForKey("studentSchedule")
-        defaults.removeObjectForKey("studentLockerInfo")
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "userEmailAddress")
+        defaults.removeObject(forKey: "studentName")
+        defaults.removeObject(forKey: "studentHomeroom")
+        defaults.removeObject(forKey: "studentNumber")
+        defaults.removeObject(forKey: "studentPhoto")
+        defaults.removeObject(forKey: "studentSchedule")
+        defaults.removeObject(forKey: "studentLockerInfo")
         
-        let alert = UIAlertController(title: "Alert", message: "Unable to get your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Alert", message: "Unable to get your student data, please contact the librarian.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
         
         let user = FIRAuth.auth()?.currentUser
         
-        user?.deleteWithCompletion { error in
+        user?.delete { error in
             if let error = error {
                 // An error happened.
                 print(error)
@@ -98,12 +98,12 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     // Google Signin
 
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError?) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: NSError?) {
         // start the signing process
         
         self.gettingDataActivityIndicator.startAnimating()
         self.loginStatusLabel.alpha = 1.0
-        self.loginButton.enabled = false
+        self.loginButton.isEnabled = false
         self.loginStatusLabel.text = "Signing process started."
         
         //print ("In view Controller")
@@ -115,10 +115,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         }
         
         let authentication = user.authentication
-        let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken,
-                                                                     accessToken: authentication.accessToken)
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!,
+                                                                     accessToken: (authentication?.accessToken)!)
         // ...
-        FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
             // ...
             print(user?.email)
             
@@ -136,8 +136,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                         print(email!)
                         //let photoURL = profile.photoURL
                         
-                        let defaults = NSUserDefaults.standardUserDefaults()
-                        defaults.setObject(email!, forKey: "userEmailAddress")
+                        let defaults = UserDefaults.standard
+                        defaults.set(email!, forKey: "userEmailAddress")
                     }
                 } else {
                     // No user is signed in.
@@ -149,10 +149,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 // now need to get the user info from Chris's database
                 self.loginStatusLabel.text = "Getting your student information " + "\r\n" + "from database." + "\r\n" + "This will take some time." + "\r\n" + "Please wait."
                 
-                let studentInfoRequestURL = NSURL (string: "https://my.mths.ca/mths_ios/student_json.php?email="+fullEmail!)
-                let studentInfoURLRequest = NSURLRequest(URL: studentInfoRequestURL!)
-                let session = NSURLSession.sharedSession()
-                let task = session.dataTaskWithRequest(studentInfoURLRequest, completionHandler: { (data, response, error) in
+                let studentInfoRequestURL = URL (string: "https://my.mths.ca/mths_ios/student_json.php?email="+fullEmail!)
+                let studentInfoURLRequest = URLRequest(url: studentInfoRequestURL!)
+                let session = URLSession.shared
+                let task = session.dataTask(with: studentInfoURLRequest, completionHandler: { (data, response, error) in
                     guard let responseData = data else {
                         //print("Error: did not receive data")
                         self.errorDuringSigningProcess("Error: did not receive data")
@@ -167,7 +167,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                     }
                     
                     do {
-                        let jsonData = try NSJSONSerialization.JSONObjectWithData(responseData, options: .MutableContainers) as! NSArray
+                        let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as! NSArray
                         // Do Stuff
                         print("Data retrieved from database")
                         
@@ -191,10 +191,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
 
                                 // add info to user defaults
                                 print("Saving to user defaults")
-                                let defaults = NSUserDefaults.standardUserDefaults()
-                                defaults.setObject(studentName, forKey: "studentName")
-                                defaults.setObject(studentHomeroom!, forKey: "studentHomeroom")
-                                defaults.setObject(studentNumber, forKey: "studentNumber")
+                                let defaults = UserDefaults.standard
+                                defaults.set(studentName, forKey: "studentName")
+                                defaults.set(studentHomeroom!, forKey: "studentHomeroom")
+                                defaults.set(studentNumber, forKey: "studentNumber")
                                 
                                 // now get the student photo
                                 self.getStudentPhotoFromDatabase(studentNumber){ (responseStudentPhoto:UIImage?) in
@@ -204,7 +204,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                     //bgImage.frame = CGRectMake(0,0,200,300)
                                     //self.view.addSubview(bgImage)
                                     
-                                    defaults.setObject(UIImagePNGRepresentation(responseStudentPhoto!), forKey: "studentPhoto")
+                                    defaults.set(UIImagePNGRepresentation(responseStudentPhoto!), forKey: "studentPhoto")
                                 }
                                 
                                 // now get student schedule
@@ -233,8 +233,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                         }
                                         
                                         // remove the first element, since it is empty
-                                        tempArrayOfClasses.removeAtIndex(0)
-                                        defaults.setObject(tempArrayOfClasses, forKey: "studentSchedule")
+                                        tempArrayOfClasses.remove(at: 0)
+                                        defaults.set(tempArrayOfClasses, forKey: "studentSchedule")
                                         print(tempArrayOfClasses)
                                         
                                     }
@@ -259,8 +259,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                         }
                                         
                                         // remove the first element, since it is empty
-                                        tempArrayOfClasses.removeAtIndex(0)
-                                        defaults.setObject(tempArrayOfClasses, forKey: "studentSchedule")
+                                        tempArrayOfClasses.remove(at: 0)
+                                        defaults.set(tempArrayOfClasses, forKey: "studentSchedule")
                                         //print(tempArrayOfClasses)
                                         
                                     }
@@ -272,14 +272,14 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                     
                                     print(responseLockerInfo)
                                     
-                                    defaults.setObject(responseLockerInfo, forKey: "studentLockerInfo")
+                                    defaults.set(responseLockerInfo, forKey: "studentLockerInfo")
                                 }
 
                                 // finally done, you have good basic student info
                                 //change over the login buttons
                                 self.loginStatusLabel.text = "Logged in as \(studentName)"
-                                self.loginButton.enabled = false
-                                self.logoutButton.enabled = true
+                                self.loginButton.isEnabled = false
+                                self.logoutButton.isEnabled = true
                                 
                                 // all done
                                 self.gettingDataActivityIndicator.stopAnimating()
@@ -306,16 +306,16 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             } else {
                 // not the correct domain
                 print("You are not using the correct email address")
-                self.loginButton.enabled = false
-                self.logoutButton.enabled = true
+                self.loginButton.isEnabled = false
+                self.logoutButton.isEnabled = true
                 self.gettingDataActivityIndicator.stopAnimating()
-                let alert = UIAlertController(title: "Alert", message: "You are not using the correct email address. You must login using an @ocsbstudent.ca domain.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title: "Alert", message: "You are not using the correct email address. You must login using an @ocsbstudent.ca domain.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 
                 let user = FIRAuth.auth()?.currentUser
                 
-                user?.deleteWithCompletion { error in
+                user?.delete { error in
                     if let error = error {
                         // An error happened.
                         print(error)
@@ -328,7 +328,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         }
     }
     
-    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user:GIDGoogleUser!,
                 withError error: NSError!) {
         // Perform any operations when the user disconnects from app here.
         // ...
@@ -336,13 +336,13 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     }
     
 
-    @IBAction func loginButtonTouchUpInside(sender: AnyObject) {
+    @IBAction func loginButtonTouchUpInside(_ sender: AnyObject) {
         // Google Signin
 
         GIDSignIn.sharedInstance().signIn()
     }
     
-    @IBAction func logoutButtonTouchUpInside(sender: AnyObject) {
+    @IBAction func logoutButtonTouchUpInside(_ sender: AnyObject) {
         // Google SingOut
         
         loginStatusLabel.alpha = 0.0
@@ -351,7 +351,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         GIDSignIn.sharedInstance().signOut()
         
         let user = FIRAuth.auth()?.currentUser
-        user?.deleteWithCompletion { error in
+        user?.delete { error in
             if let error = error {
                 // An error happened.
                 print(error)
@@ -363,17 +363,17 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
 
         try! FIRAuth.auth()!.signOut()
         
-        loginButton.enabled = true
-        logoutButton.enabled = false
+        loginButton.isEnabled = true
+        logoutButton.isEnabled = false
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.removeObjectForKey("userEmailAddress")
-        defaults.removeObjectForKey("studentName")
-        defaults.removeObjectForKey("studentHomeroom")
-        defaults.removeObjectForKey("studentNumber")
-        defaults.removeObjectForKey("studentPhoto")
-        defaults.removeObjectForKey("studentSchedule")
-        defaults.removeObjectForKey("studentLockerInfo")
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "userEmailAddress")
+        defaults.removeObject(forKey: "studentName")
+        defaults.removeObject(forKey: "studentHomeroom")
+        defaults.removeObject(forKey: "studentNumber")
+        defaults.removeObject(forKey: "studentPhoto")
+        defaults.removeObject(forKey: "studentSchedule")
+        defaults.removeObject(forKey: "studentLockerInfo")
         
         print("Logged out")
     }
@@ -381,7 +381,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     
     // function to get back all the students classes if you are in HS
-    func getHSStudentScheduleFromDatabase(studentNumber: Int, onCompletion: [SchoolClass] -> ()) {
+    func getHSStudentScheduleFromDatabase(_ studentNumber: Int, onCompletion: @escaping ([SchoolClass]) -> ()) {
         //getStudentScheduleFromDatabase(212649)
         // now need to get the schedule info from Chris's database
         
@@ -389,10 +389,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         // could not get this working for some reason!!!!
         //var studentSchedule : StudentSchedule
         
-        let studentScheduleRequestURL = NSURL (string: "https://my.mths.ca/mths_ios/student_schedule_json.php?sn="+String(studentNumber))
-        let studentScheduleURLRequest = NSURLRequest(URL: studentScheduleRequestURL!)
-        let studentScheduleSession = NSURLSession.sharedSession()
-        let studentScheduleTask = studentScheduleSession.dataTaskWithRequest(studentScheduleURLRequest, completionHandler: { (studentScheduleData, studentScheduleResponse, studentScheduleError) in
+        let studentScheduleRequestURL = URL (string: "https://my.mths.ca/mths_ios/student_schedule_json.php?sn="+String(studentNumber))
+        let studentScheduleURLRequest = URLRequest(url: studentScheduleRequestURL!)
+        let studentScheduleSession = URLSession.shared
+        let studentScheduleTask = studentScheduleSession.dataTask(with: studentScheduleURLRequest, completionHandler: { (studentScheduleData, studentScheduleResponse, studentScheduleError) in
             guard let scheduleResponseData = studentScheduleData else {
                 print("Error: did not receive data")
                 
@@ -405,7 +405,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             }
             
             do {
-                let studentScheduleJSONData = try NSJSONSerialization.JSONObjectWithData(scheduleResponseData, options: .MutableContainers) as! NSArray
+                let studentScheduleJSONData = try JSONSerialization.jsonObject(with: scheduleResponseData, options: .mutableContainers) as! NSArray
                 
                 print("Data retrieved from database")
                 
@@ -414,11 +414,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                     for singleClass in studentScheduleJSONData {
                         if var item = singleClass as? [String: AnyObject] {
                             let aSingleClass = SchoolClass(
-                                semester: String(item["semester"]!),
+                                semester: String(describing: item["semester"]!),
                                 period: String(item["period"]! as! String),
-                                course: String(item["course"]!),
-                                room: String(item["room"]!),
-                                teacher: String(item["teacher"]!),
+                                course: String(describing: item["course"]!),
+                                room: String(describing: item["room"]!),
+                                teacher: String(describing: item["teacher"]!),
                                 day: String(" "))
                             //print(aSingleClass)
                             studentSchedule.append(aSingleClass)
@@ -441,17 +441,17 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     }
     
     // function to get back all the students classes if you are in HS
-    func get7And8StudentScheduleFromDatabase(studentHomeroom: String, onCompletion: [SchoolClass] -> ()) {
+    func get7And8StudentScheduleFromDatabase(_ studentHomeroom: String, onCompletion: @escaping ([SchoolClass]) -> ()) {
         // now need to get the schedule info from Chris's database
         
         var studentSchedule : [SchoolClass] = []
         // could not get this working for some reason!!!!
         //var studentSchedule : StudentSchedule
         
-        let studentScheduleRequestURL = NSURL (string: "https://my.mths.ca/mths_ios/schedule_7_and_8_json.php?homeroom="+String(studentHomeroom))
-        let studentScheduleURLRequest = NSURLRequest(URL: studentScheduleRequestURL!)
-        let studentScheduleSession = NSURLSession.sharedSession()
-        let studentScheduleTask = studentScheduleSession.dataTaskWithRequest(studentScheduleURLRequest, completionHandler: { (studentScheduleData, studentScheduleResponse, studentScheduleError) in
+        let studentScheduleRequestURL = URL (string: "https://my.mths.ca/mths_ios/schedule_7_and_8_json.php?homeroom="+String(studentHomeroom))
+        let studentScheduleURLRequest = URLRequest(url: studentScheduleRequestURL!)
+        let studentScheduleSession = URLSession.shared
+        let studentScheduleTask = studentScheduleSession.dataTask(with: studentScheduleURLRequest, completionHandler: { (studentScheduleData, studentScheduleResponse, studentScheduleError) in
             guard let scheduleResponseData = studentScheduleData else {
                 print("Error: did not receive data")
                 
@@ -464,7 +464,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             }
             
             do {
-                let studentScheduleJSONData = try NSJSONSerialization.JSONObjectWithData(scheduleResponseData, options: .MutableContainers) as! NSArray
+                let studentScheduleJSONData = try JSONSerialization.jsonObject(with: scheduleResponseData, options: .mutableContainers) as! NSArray
                 
                 print("Data retrieved from database")
                 
@@ -475,10 +475,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                             let aSingleClass = SchoolClass(
                                 semester: String(""),
                                 period: String(item["period"]! as! String),
-                                course: String(item["course"]!),
+                                course: String(describing: item["course"]!),
                                 room: String(""),
                                 teacher: String(""),
-                                day: String(item["day"]!))
+                                day: String(describing: item["day"]!))
                             //print(aSingleClass)
                             studentSchedule.append(aSingleClass)
                             
@@ -500,16 +500,16 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     }
     
     // function to get back student's photo
-    func getStudentPhotoFromDatabase(studentNumber: Int, onCompletion: UIImage -> ()) {
+    func getStudentPhotoFromDatabase(_ studentNumber: Int, onCompletion: @escaping (UIImage) -> ()) {
         //getStudentScheduleFromDatabase(212649)
         // now need to get the photo info from Chris's database
         
-        let studentPhotoRequestURL = NSURL (string: "https://my.mths.ca/photos/" + String(studentNumber) + ".JPG")
-        let studentPhotoURLRequest = NSURLRequest(URL: studentPhotoRequestURL!)
-        let studentPhotoSession = NSURLSession.sharedSession()
+        let studentPhotoRequestURL = URL (string: "https://my.mths.ca/photos/" + String(studentNumber) + ".JPG")
+        let studentPhotoURLRequest = URLRequest(url: studentPhotoRequestURL!)
+        let studentPhotoSession = URLSession.shared
         var studentPhoto : UIImage = UIImage(named: "MTHS_Logo.jpg")!
         
-        let studentPhotoTask = studentPhotoSession.dataTaskWithRequest(studentPhotoURLRequest, completionHandler: { (data, response, error) in
+        let studentPhotoTask = studentPhotoSession.dataTask(with: studentPhotoURLRequest, completionHandler: { (data, response, error) in
             guard let responseData = data else {
                 //print("Error: did not receive data")
                 self.errorDuringSigningProcess("Error: did not receive data")
@@ -525,7 +525,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             
             do {
                 //get image
-                let getPhoto = NSData(contentsOfURL: studentPhotoRequestURL!)
+                let getPhoto = try? Data(contentsOf: studentPhotoRequestURL!)
                 //print(getPhoto)
                 if getPhoto == nil {
                     // just leave the current generic MTHS logo as the photo
@@ -545,15 +545,15 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     }
     
     // function to get back all the students classes if you are in HS
-    func getLockerFromDatabase(studentNumber: Int, onCompletion: [String:String] -> ()) {
+    func getLockerFromDatabase(_ studentNumber: Int, onCompletion: @escaping ([String:String]) -> ()) {
         // now need to get the locker info from Chris's database
         
         //var studentLockerNumber: String = "nil"
         
-        let studentLockerRequestURL = NSURL (string: "https://my.mths.ca/mths_ios/locker_info_json.php?sn="+String(studentNumber))
-        let studentLockerURLRequest = NSURLRequest(URL: studentLockerRequestURL!)
-        let studentLockerSession = NSURLSession.sharedSession()
-        let studentLockerTask = studentLockerSession.dataTaskWithRequest(studentLockerURLRequest, completionHandler: { (studentLockerData, studentScheduleResponse, studentScheduleError) in
+        let studentLockerRequestURL = URL (string: "https://my.mths.ca/mths_ios/locker_info_json.php?sn="+String(studentNumber))
+        let studentLockerURLRequest = URLRequest(url: studentLockerRequestURL!)
+        let studentLockerSession = URLSession.shared
+        let studentLockerTask = studentLockerSession.dataTask(with: studentLockerURLRequest, completionHandler: { (studentLockerData, studentScheduleResponse, studentScheduleError) in
             guard let scheduleResponseData = studentLockerData else {
                 print("Error: did not receive data")
                 
@@ -566,7 +566,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             }
             
             do {
-                let studentLockerJSONData = try NSJSONSerialization.JSONObjectWithData(scheduleResponseData, options: .MutableContainers) as! NSArray
+                let studentLockerJSONData = try JSONSerialization.jsonObject(with: scheduleResponseData, options: .mutableContainers) as! NSArray
                 
                 print("Data retrieved from database")
                 

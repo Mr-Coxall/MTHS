@@ -29,15 +29,15 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         
         // if user is not logged in, then student info needs to not be accessable
         // test
-        let myPath = NSIndexPath(forRow: 3, inSection: 0)
-        tableView.cellForRowAtIndexPath(myPath)?.hidden = true
-        tableView.cellForRowAtIndexPath(myPath)?.userInteractionEnabled = false
+        let myPath = IndexPath(row: 3, section: 0)
+        tableView.cellForRow(at: myPath)?.isHidden = true
+        tableView.cellForRow(at: myPath)?.isUserInteractionEnabled = false
         
         
     }
 
-    override func viewWillAppear(animated: Bool) {
-        self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
+    override func viewWillAppear(_ animated: Bool) {
+        self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
 

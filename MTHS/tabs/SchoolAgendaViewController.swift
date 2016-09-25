@@ -18,8 +18,8 @@ class SchoolAgendaViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // load school timetable
-        let url = NSBundle.mainBundle().URLForResource("Student Handbook", withExtension:"pdf")
-        let requestObj = NSURLRequest(URL: url!)
+        let url = Bundle.main.url(forResource: "Student Handbook", withExtension:"pdf")
+        let requestObj = URLRequest(url: url!)
         schoolAgendaWebView.loadRequest(requestObj)
         // make it full screen
         schoolAgendaWebView.scalesPageToFit = true

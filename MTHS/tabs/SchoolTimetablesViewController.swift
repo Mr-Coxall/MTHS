@@ -18,8 +18,8 @@ class SchoolTimetablesViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // load school timetable
-        let url = NSBundle.mainBundle().URLForResource("School Timetables", withExtension:"html")
-        let requestObj = NSURLRequest(URL: url!);
+        let url = Bundle.main.url(forResource: "School Timetables", withExtension:"html")
+        let requestObj = URLRequest(url: url!);
         schoolTimetableWebView.loadRequest(requestObj);
     }
 

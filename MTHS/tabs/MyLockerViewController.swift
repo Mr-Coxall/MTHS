@@ -25,8 +25,8 @@ class MyLockerViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // check if user is logged in
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let userLockerInfo = defaults.objectForKey("studentLockerInfo") {
+        let defaults = UserDefaults.standard
+        if let userLockerInfo = defaults.object(forKey: "studentLockerInfo") {
             //print(userLockerInfo)
             let lockerInfoAsDictionary = userLockerInfo as! [String:String]
             
@@ -62,20 +62,20 @@ class MyLockerViewController: UIViewController {
     }
     
     
-    @IBAction func saveCombination(sender: AnyObject) {
+    @IBAction func saveCombination(_ sender: AnyObject) {
         // save the locker combination
         
         let tempCombination = savedCombinationTextbox.text
         
         if tempCombination! != "" {
-            let defaults = NSUserDefaults.standardUserDefaults()
-            if let userLockerInfo = defaults.objectForKey("studentLockerInfo") {
+            let defaults = UserDefaults.standard
+            if let userLockerInfo = defaults.object(forKey: "studentLockerInfo") {
                 var lockerInfoAsDictionary = userLockerInfo as! [String:String]
                 
                 // remove and replace the user default data
-                defaults.removeObjectForKey("studentLockerInfo")
+                defaults.removeObject(forKey: "studentLockerInfo")
                 lockerInfoAsDictionary["combo"] = tempCombination
-                defaults.setObject(lockerInfoAsDictionary, forKey: "studentLockerInfo")
+                defaults.set(lockerInfoAsDictionary, forKey: "studentLockerInfo")
                 
                 // now update database
                 let tempCombo = lockerInfoAsDictionary["combo"]!
@@ -83,39 +83,39 @@ class MyLockerViewController: UIViewController {
                 
                 let originalPostURL = "https://my.mths.ca/mths_ios/combination_upload.php?ln=" + tempLocker + "&combo=" + tempCombo
                 // if they pace spaces in the combo, we need to replace them with "%20" in the URL
-                let postURL :String = originalPostURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+                let postURL :String = originalPostURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
 
-                let request = NSMutableURLRequest(URL: NSURL(string: postURL)!)
-                request.HTTPMethod = "POST"
+                let request = NSMutableURLRequest(url: URL(string: postURL)!)
+                request.httpMethod = "POST"
                 // does not seem to do anything, but you need it
                 let postString = ""
-                request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-                let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+                request.httpBody = postString.data(using: String.Encoding.utf8)
+                let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
                     guard error == nil && data != nil else {
                         // check for fundamental networking error
                         print("error=\(error)")
                         return
                     }
                     
-                    if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
+                    if let httpStatus = response as? HTTPURLResponse , httpStatus.statusCode != 200 {
                         // check for http errors
                         print("statusCode should be 200, but is \(httpStatus.statusCode)")
                         print("response = \(response!)")
                     }
                     
-                    let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                    let responseString = NSString(data: data!, encoding: String.Encoding.utf8)
                     print("responseString = \(responseString!)")
                     
-                }
+                }) 
                 task.resume()
                 
                 // show alert, to let them know it happened
-                let alertController = UIAlertController(title: "Data Updated", message: "You have saved your combination to the database.", preferredStyle: .Alert)
+                let alertController = UIAlertController(title: "Data Updated", message: "You have saved your combination to the database.", preferredStyle: .alert)
                 
-                let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alertController.addAction(defaultAction)
                 
-                self.presentViewController(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
 
             }
         }

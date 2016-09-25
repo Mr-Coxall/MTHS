@@ -15,7 +15,7 @@ class TechHelpViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var techHelpLabel: UILabel!
     @IBOutlet weak var techHelpButton: UIButton!
     
-    var defaults = NSUserDefaults.standardUserDefaults()
+    var defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +23,16 @@ class TechHelpViewController: UIViewController, MFMailComposeViewControllerDeleg
         // Do any additional setup after loading the view.
         
         // check if you are currently logged in and have data stored locally
-        if let studentName = defaults.stringForKey("studentName") {
+        if let studentName = defaults.string(forKey: "studentName") {
             // logged in
             print("Loged in as:" + studentName)
-            techHelpLabel.hidden = true
-            techHelpButton.hidden = false
+            techHelpLabel.isHidden = true
+            techHelpButton.isHidden = false
 
         } else {
             // NOT logged in !!
-            techHelpLabel.hidden = false
-            techHelpButton.hidden = true
+            techHelpLabel.isHidden = false
+            techHelpButton.isHidden = true
         }
 
     }
@@ -42,7 +42,7 @@ class TechHelpViewController: UIViewController, MFMailComposeViewControllerDeleg
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func techHelpButton(sender: AnyObject) {
+    @IBAction func techHelpButton(_ sender: AnyObject) {
         // send tech help email
         
         if MFMailComposeViewController.canSendMail() {
@@ -51,7 +51,7 @@ class TechHelpViewController: UIViewController, MFMailComposeViewControllerDeleg
             mail.setToRecipients(["help@mths.ca"])
             mail.setSubject("Tech Help Request")
             mail.setMessageBody("<b>I need help with ...</b>", isHTML: true)
-            presentViewController(mail, animated: true, completion: nil)
+            present(mail, animated: true, completion: nil)
         } else {
             print("Cannot send mail")
             // give feedback to the user
@@ -61,20 +61,20 @@ class TechHelpViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     // MARK: - MFMailComposeViewControllerDelegate
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result.rawValue {
-        case MFMailComposeResultCancelled.rawValue:
+        case MFMailComposeResult.cancelled.rawValue:
             print("Cancelled")
-        case MFMailComposeResultSaved.rawValue:
+        case MFMailComposeResult.saved.rawValue:
             print("Saved")
-        case MFMailComposeResultSent.rawValue:
+        case MFMailComposeResult.sent.rawValue:
             print("Sent")
-        case MFMailComposeResultFailed.rawValue:
+        case MFMailComposeResult.failed.rawValue:
             print("Error: \(error?.localizedDescription)")
         default:
             break
         }
-        controller.dismissViewControllerAnimated(true, completion: nil)
+        controller.dismiss(animated: true, completion: nil)
     }
 
     /*

@@ -17,5 +17,5 @@ class StudentModel: NSObject {
     var studentHomeroom : String!
     var studentFireBaseID : String!
     var studentPhoto : UIImage!
-    var lastUpdated : NSData!
+    var lastUpdated : Data!
 }

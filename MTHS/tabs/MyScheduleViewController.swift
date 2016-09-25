@@ -11,7 +11,7 @@ import UIKit
 
 class MyScheduleViewController: UITableViewController {
     
-    var defaults = NSUserDefaults.standardUserDefaults()
+    var defaults = UserDefaults.standard
     var studentArrayOfClasses = [[String: String]()]
     var tableRowStringArray: [String] = []
 
@@ -25,12 +25,12 @@ class MyScheduleViewController: UITableViewController {
         self.tableView.dataSource = self
         
         // check if you are currently logged in and have data stored locally
-        if let studentName = defaults.stringForKey("studentName") {
+        if let studentName = defaults.string(forKey: "studentName") {
             // logged in
             print("Loged in as:" + studentName)
             
-            let studentHomeroom = defaults.stringForKey("studentHomeroom")
-            let studentAnyObjectOfClasses = defaults.objectForKey("studentSchedule")
+            let studentHomeroom = defaults.string(forKey: "studentHomeroom")
+            let studentAnyObjectOfClasses = defaults.object(forKey: "studentSchedule")
             studentArrayOfClasses = (studentAnyObjectOfClasses as! NSArray) as! Array
             
             // it is different if you are in HS or 7&8
@@ -42,14 +42,14 @@ class MyScheduleViewController: UITableViewController {
                 
                 for tempClass in studentArrayOfClasses {
                     //print(tempClass)
-                    switch UIDevice.currentDevice().userInterfaceIdiom {
-                    case .Phone:
+                    switch UIDevice.current.userInterfaceIdiom {
+                    case .phone:
                         // It's an iPhone
                         tableRowStringArray.append("Day: " + tempClass["day"]! +
                             " Period: " + tempClass["period"]! + "\r\n" +
                             "Course: " + tempClass["course"]!)
                         self.tableView.rowHeight = 75.0
-                    case .Pad:
+                    case .pad:
                         // It's an iPad
                         tableRowStringArray.append("Day: " + tempClass["day"]! +
                             " Period: " + tempClass["period"]! + "\r\n" +
@@ -66,8 +66,8 @@ class MyScheduleViewController: UITableViewController {
 
                 for tempClass in studentArrayOfClasses {
                     //print(tempClass)
-                    switch UIDevice.currentDevice().userInterfaceIdiom {
-                    case .Phone:
+                    switch UIDevice.current.userInterfaceIdiom {
+                    case .phone:
                         // It's an iPhone
                         tableRowStringArray.append("Semester: " + tempClass["semester"]! +
                             " Period: " + tempClass["period"]! + "\r\n" +
@@ -75,7 +75,7 @@ class MyScheduleViewController: UITableViewController {
                             " Room: " + tempClass["room"]! + "\r\n" +
                             "Teacher: " + tempClass["teacher"]!)
                         self.tableView.rowHeight = 75.0
-                    case .Pad:
+                    case .pad:
                         // It's an iPad
                         tableRowStringArray.append("Semester: " + tempClass["semester"]! +
                             " Period: " + tempClass["period"]! +
@@ -98,29 +98,29 @@ class MyScheduleViewController: UITableViewController {
  
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
     // for updating the table view
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableRowStringArray.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         // make it multi-lines
         cell.textLabel?.numberOfLines = 3
         //self.tableView.rowHeight = 75.0
-        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         
-        cell.textLabel?.text = tableRowStringArray[indexPath.row]
+        cell.textLabel?.text = tableRowStringArray[(indexPath as NSIndexPath).row]
     
         return cell
     }

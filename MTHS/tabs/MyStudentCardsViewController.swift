@@ -25,24 +25,24 @@ class MyStudentCardsViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // check size of the device
-        let screenSize = UIScreen.mainScreen().nativeBounds
+        let screenSize = UIScreen.main.nativeBounds
         print(screenSize)
         
         // check if user is logged in
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let userEmailAddress = defaults.stringForKey("userEmailAddress") {
+        let defaults = UserDefaults.standard
+        if let userEmailAddress = defaults.string(forKey: "userEmailAddress") {
             print(userEmailAddress)
             
-            let studentName = defaults.stringForKey("studentName")
+            let studentName = defaults.string(forKey: "studentName")
             studentNameLabel.text = studentName
             
-            let studentNumber = defaults.stringForKey("studentNumber")
+            let studentNumber = defaults.string(forKey: "studentNumber")
             studentNumberLabel.text = studentNumber
             
             let studentBarCode = "*" + studentNumber! + "*"
             studentBarCodeLabel.text = studentBarCode
             
-            let studentPhoto = defaults.dataForKey("studentPhoto")
+            let studentPhoto = defaults.data(forKey: "studentPhoto")
             studentPhotoImage.image = UIImage(data: studentPhoto!)
             //print(studentPhoto)
             
@@ -51,9 +51,9 @@ class MyStudentCardsViewController: UIViewController {
             if iPadProLargeScreenSize == screenSize {
                 // 12.9" iPadPro
                 //print("Here")
-                let rotate = CGAffineTransformMakeRotation(CGFloat(0.0))
-                let translate = CGAffineTransformTranslate(CGAffineTransformIdentity, -145.0, -130.0)
-                studentCardBackground.transform = CGAffineTransformConcat(rotate, translate)
+                let rotate = CGAffineTransform(rotationAngle: CGFloat(0.0))
+                let translate = CGAffineTransform.identity.translatedBy(x: -145.0, y: -130.0)
+                studentCardBackground.transform = rotate.concatenating(translate)
             }
             
         } else {
@@ -63,23 +63,23 @@ class MyStudentCardsViewController: UIViewController {
         }
         
         // check if it is an iPad or iPhone, to rotate stuff
-        switch UIDevice.currentDevice().userInterfaceIdiom {
-        case .Phone:
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
             // It's an iPhone
             //print("iPhone")
 
-            studentNameLabel.hidden = true
-            studentNumberLabel.hidden = true
-            studentBarCodeLabel.hidden = true
-            studentPhotoImage.hidden = true
-            year2017Label.hidden = true
-            year2016Label.hidden = true
-            studentCardBackground.hidden = true
+            studentNameLabel.isHidden = true
+            studentNumberLabel.isHidden = true
+            studentBarCodeLabel.isHidden = true
+            studentPhotoImage.isHidden = true
+            year2017Label.isHidden = true
+            year2016Label.isHidden = true
+            studentCardBackground.isHidden = true
             
-        case .Pad:
+        case .pad:
             // It's an iPad
             //print("iPad")
-            iPhoneWarningLabel.hidden = true
+            iPhoneWarningLabel.isHidden = true
             
         default:
             // Uh, oh! What could it be?

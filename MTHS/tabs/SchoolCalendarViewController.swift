@@ -18,8 +18,8 @@ class SchoolCalendarViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // load school calendar
-        let url = NSURL (string: "https://calendar.google.com/calendar/embed?src=ocsb.ca_sdch4911okio03csdkuaf27beg@group.calendar.google.com&ctz=America/Toronto&pvttk=a3b984a811faad9e768b6735cd65a7bd&mode=AGENDA&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&wkst=1&showTitle=0%22");
-        let requestObj = NSURLRequest(URL: url!);
+        let url = URL (string: "https://calendar.google.com/calendar/embed?src=ocsb.ca_sdch4911okio03csdkuaf27beg@group.calendar.google.com&ctz=America/Toronto&pvttk=a3b984a811faad9e768b6735cd65a7bd&mode=AGENDA&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&wkst=1&showTitle=0%22");
+        let requestObj = URLRequest(url: url!);
         schoolCalendarWebView.loadRequest(requestObj);
     }
 

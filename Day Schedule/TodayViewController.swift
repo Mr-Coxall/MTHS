@@ -24,31 +24,31 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Do any additional setup after loading the view from its nib.
         
         // load the day schedule JSON file into memory
-        if let path = NSBundle.mainBundle().pathForResource("day_schedule", ofType: "json") {
+        if let path = Bundle.main.path(forResource: "day_schedule", ofType: "json") {
             do {
-                let jsonData = try NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: NSData.ReadingOptions.mappedIfSafe)
                 do {
                     //let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                    let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+                    let jsonResult: NSArray = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSArray
                     
-                    let dateFormatter = NSDateFormatter()
+                    let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd"
-                    let currentDate = NSDate()
+                    let currentDate = Date()
                     print(currentDate)
                     
                     for singleDay in jsonResult {
                         daySchedule.append(singleDay as! Dictionary<String, String>)
                         let dayAsString = singleDay["day"] as? String
-                        let day = dateFormatter.dateFromString(dayAsString!)
+                        let day = dateFormatter.date(from: dayAsString!)
                         //print(day!)
-                        if day?.compare(currentDate) == NSComparisonResult.OrderedSame {
+                        if day?.compare(currentDate) == ComparisonResult.orderedSame {
                             //print (day)
                             //print ("Got it")
                         }
                         
-                        let order = NSCalendar.currentCalendar().compareDate(currentDate, toDate: day!, toUnitGranularity: .Day)
+                        let order = (Calendar.current as NSCalendar).compare(currentDate, to: day!, toUnitGranularity: .day)
                         
-                        if order == NSComparisonResult.OrderedSame {
+                        if order == ComparisonResult.orderedSame {
                             print(day!)
                             // this is today, so update today widget label
                             
@@ -97,8 +97,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
     }
     
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-        return UIEdgeInsetsZero
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
     }
     
     override func didReceiveMemoryWarning() {
@@ -106,14 +106,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Dispose of any resources that can be recreated.
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
 
-        completionHandler(NCUpdateResult.NewData)
+        completionHandler(NCUpdateResult.newData)
     }
     
 }
