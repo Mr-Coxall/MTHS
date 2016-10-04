@@ -102,10 +102,6 @@ class MyScheduleViewController: UITableViewController {
         return true
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
     // for updating the table view
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         

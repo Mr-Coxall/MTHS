@@ -53,21 +53,21 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                             // this is today, so update today widget label
                             
                             let hsDayAsString = singleDay["HS_day"] as? String
-                            let sevenAnd8DayAsString = singleDay["7_and_8_day"] as? String
+                            //let sevenAnd8DayAsString = singleDay["7_and_8_day"] as? String
                             
                             let hsDayAsInt = Int(hsDayAsString!)
-                            let sevenAnd8DayAsInt = Int(sevenAnd8DayAsString!)
+                            //let sevenAnd8DayAsInt = Int(sevenAnd8DayAsString!)
                             
                             var widgetString: String
-                            if hsDayAsInt != nil && sevenAnd8DayAsInt != nil{
+                            if hsDayAsInt != nil {
                                 // just 2 regular day numbers
                                 
-                                widgetString = "Day \(hsDayAsInt!) - HS & Day \(sevenAnd8DayAsInt!) - 7 & 8"
+                                widgetString = "HS Day - \(hsDayAsInt!)"
                             }
-                            else if hsDayAsInt == nil && sevenAnd8DayAsInt != nil {
+                            else if hsDayAsInt == nil {
                                 // HS has exams
                                 
-                                widgetString = "\(hsDayAsString!) & Day \(sevenAnd8DayAsInt!) - 7 & 8"
+                                widgetString = "\(hsDayAsString!)"
                             } else {
                                 // both are text, so just show 1
                                 
@@ -90,10 +90,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             }
         }
         
-    }
-    
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-        return UIEdgeInsetsZero
     }
     
     func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0424FBEE1D581D53000DEDB6 /* GetStudentSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0424FBED1D581D53000DEDB6 /* GetStudentSchedule.swift */; };
+		045595981DA35778003B90E6 /* day_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 045595971DA35778003B90E6 /* day_schedule.json */; };
+		045595991DA35778003B90E6 /* day_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 045595971DA35778003B90E6 /* day_schedule.json */; };
 		0481FC9B1D311DC6000559FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481FC9A1D311DC6000559FF /* AppDelegate.swift */; };
 		0481FC9E1D311DC6000559FF /* MTHS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0481FC9C1D311DC6000559FF /* MTHS.xcdatamodeld */; };
 		0481FCA01D311DC6000559FF /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481FC9F1D311DC6000559FF /* MasterViewController.swift */; };
@@ -32,7 +34,6 @@
 		049587411D616BEE0065690B /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049587401D616BEE0065690B /* TodayViewController.swift */; };
 		049587441D616BEE0065690B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049587421D616BEE0065690B /* MainInterface.storyboard */; };
 		049587481D616BEE0065690B /* Day Schedule.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0495873C1D616BEE0065690B /* Day Schedule.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0495874E1D6170600065690B /* day_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 0495874D1D6170600065690B /* day_schedule.json */; };
 		04B30E111D484736006EC846 /* MTHS_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E101D484736006EC846 /* MTHS_Logo.png */; };
 		04B30E131D484868006EC846 /* Student Card Background iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E121D484868006EC846 /* Student Card Background iPad.png */; };
 		04B30E151D484F6F006EC846 /* MTHS_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04B30E141D484F6F006EC846 /* MTHS_Logo.jpg */; };
@@ -72,6 +73,9 @@
 
 /* Begin PBXFileReference section */
 		0424FBED1D581D53000DEDB6 /* GetStudentSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetStudentSchedule.swift; path = NetworkControllers/GetStudentSchedule.swift; sourceTree = "<group>"; };
+		045595951DA35538003B90E6 /* Day Schedule.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Day Schedule.entitlements"; sourceTree = "<group>"; };
+		045595961DA3554F003B90E6 /* MTHS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MTHS.entitlements; sourceTree = "<group>"; };
+		045595971DA35778003B90E6 /* day_schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = day_schedule.json; sourceTree = "<group>"; };
 		0481FC971D311DC6000559FF /* MTHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0481FC9A1D311DC6000559FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0481FC9D1D311DC6000559FF /* MTHS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MTHS.xcdatamodel; sourceTree = "<group>"; };
@@ -100,7 +104,6 @@
 		049587401D616BEE0065690B /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		049587431D616BEE0065690B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		049587451D616BEE0065690B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0495874D1D6170600065690B /* day_schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = day_schedule.json; sourceTree = "<group>"; };
 		04B30E101D484736006EC846 /* MTHS_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MTHS_Logo.png; sourceTree = "<group>"; };
 		04B30E121D484868006EC846 /* Student Card Background iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Student Card Background iPad.png"; sourceTree = "<group>"; };
 		04B30E141D484F6F006EC846 /* MTHS_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MTHS_Logo.jpg; sourceTree = "<group>"; };
@@ -136,9 +139,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		045595901DA35451003B90E6 /* Common Files */ = {
+			isa = PBXGroup;
+			children = (
+				045595971DA35778003B90E6 /* day_schedule.json */,
+			);
+			name = "Common Files";
+			sourceTree = "<group>";
+		};
 		0481FC8E1D311DC6000559FF = {
 			isa = PBXGroup;
 			children = (
+				045595901DA35451003B90E6 /* Common Files */,
 				0481FC991D311DC6000559FF /* MTHS */,
 				0495873F1D616BEE0065690B /* Day Schedule */,
 				0481FC981D311DC6000559FF /* Products */,
@@ -159,6 +171,7 @@
 		0481FC991D311DC6000559FF /* MTHS */ = {
 			isa = PBXGroup;
 			children = (
+				045595961DA3554F003B90E6 /* MTHS.entitlements */,
 				04EF72C31D5686EF00D401C4 /* NetworkControllers */,
 				04EF72C21D5686E100D401C4 /* Models */,
 				0481FCCD1D3480C9000559FF /* files */,
@@ -210,7 +223,7 @@
 		0495873F1D616BEE0065690B /* Day Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				0495874D1D6170600065690B /* day_schedule.json */,
+				045595951DA35538003B90E6 /* Day Schedule.entitlements */,
 				049587401D616BEE0065690B /* TodayViewController.swift */,
 				049587421D616BEE0065690B /* MainInterface.storyboard */,
 				049587451D616BEE0065690B /* Info.plist */,
@@ -313,11 +326,21 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 7674WVY5W7;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					0495873B1D616BEE0065690B = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 7674WVY5W7;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -351,6 +374,7 @@
 				0481FCB21D311E30000559FF /* GoogleService-Info.plist in Resources */,
 				04B30E111D484736006EC846 /* MTHS_Logo.png in Resources */,
 				04E4390F1D66B1F7004FCB3F /* Student Handbook.pdf in Resources */,
+				045595981DA35778003B90E6 /* day_schedule.json in Resources */,
 				04B30E151D484F6F006EC846 /* MTHS_Logo.jpg in Resources */,
 				0481FCD21D3480D8000559FF /* School Timetables.html in Resources */,
 				0481FCA71D311DC6000559FF /* Assets.xcassets in Resources */,
@@ -363,7 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				049587441D616BEE0065690B /* MainInterface.storyboard in Resources */,
-				0495874E1D6170600065690B /* day_schedule.json in Resources */,
+				045595991DA35778003B90E6 /* day_schedule.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
