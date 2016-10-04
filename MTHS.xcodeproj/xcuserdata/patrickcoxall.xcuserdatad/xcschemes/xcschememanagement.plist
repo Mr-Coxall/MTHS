@@ -4,6 +4,21 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AppleWatch (Complication).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>AppleWatch (Notification).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>AppleWatch.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Day Schedule.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,6 +32,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0455959B1DA3599C003B90E6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0481FC961D311DC6000559FF</key>
 		<dict>
 			<key>primary</key>
