@@ -19,6 +19,8 @@
 		045595B61DA3599C003B90E6 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045595B51DA3599C003B90E6 /* ComplicationController.swift */; };
 		045595B81DA3599C003B90E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045595B71DA3599C003B90E6 /* Assets.xcassets */; };
 		045595BC1DA3599C003B90E6 /* AppleWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0455959C1DA3599C003B90E6 /* AppleWatch.app */; };
+		045595C51DA35AD3003B90E6 /* day_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 045595971DA35778003B90E6 /* day_schedule.json */; };
+		045595C61DA35AD4003B90E6 /* day_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 045595971DA35778003B90E6 /* day_schedule.json */; };
 		0481FC9B1D311DC6000559FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481FC9A1D311DC6000559FF /* AppDelegate.swift */; };
 		0481FC9E1D311DC6000559FF /* MTHS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0481FC9C1D311DC6000559FF /* MTHS.xcdatamodeld */; };
 		0481FCA01D311DC6000559FF /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481FC9F1D311DC6000559FF /* MasterViewController.swift */; };
@@ -246,6 +248,7 @@
 		0481FC8E1D311DC6000559FF = {
 			isa = PBXGroup;
 			children = (
+				04EF72C21D5686E100D401C4 /* Models */,
 				045595901DA35451003B90E6 /* Common Files */,
 				0481FC991D311DC6000559FF /* MTHS */,
 				0495873F1D616BEE0065690B /* Day Schedule */,
@@ -273,7 +276,6 @@
 			children = (
 				045595961DA3554F003B90E6 /* MTHS.entitlements */,
 				04EF72C31D5686EF00D401C4 /* NetworkControllers */,
-				04EF72C21D5686E100D401C4 /* Models */,
 				0481FCCD1D3480C9000559FF /* files */,
 				0481FCB31D312A7F000559FF /* ViewControllers */,
 				0481FCB11D311E30000559FF /* GoogleService-Info.plist */,
@@ -342,6 +344,7 @@
 				04EF72CC1D56908800D401C4 /* SingleStudentFeeStructure.swift */,
 			);
 			name = Models;
+			path = MTHS;
 			sourceTree = "<group>";
 		};
 		04EF72C31D5686EF00D401C4 /* NetworkControllers */ = {
@@ -460,6 +463,7 @@
 				TargetAttributes = {
 					0455959B1DA3599C003B90E6 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 7674WVY5W7;
 						ProvisioningStyle = Automatic;
 					};
 					045595A71DA3599C003B90E6 = {
@@ -516,6 +520,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				045595A21DA3599C003B90E6 /* Assets.xcassets in Resources */,
+				045595C61DA35AD4003B90E6 /* day_schedule.json in Resources */,
 				045595A01DA3599C003B90E6 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				045595B81DA3599C003B90E6 /* Assets.xcassets in Resources */,
+				045595C51DA35AD3003B90E6 /* day_schedule.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +766,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7674WVY5W7;
 				IBSC_MODULE = AppleWatch_Extension;
 				INFOPLIST_FILE = AppleWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = ca.coxall.MTHS.watchkitapp;
@@ -782,6 +789,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7674WVY5W7;
 				IBSC_MODULE = AppleWatch_Extension;
 				INFOPLIST_FILE = AppleWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = ca.coxall.MTHS.watchkitapp;
