@@ -62,6 +62,7 @@ class TechHelpViewController: UIViewController, MFMailComposeViewControllerDeleg
     // MARK: - MFMailComposeViewControllerDelegate
     
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        /*
         switch result.rawValue {
         case MFMailComposeResultCancelled.rawValue:
             print("Cancelled")
@@ -74,6 +75,7 @@ class TechHelpViewController: UIViewController, MFMailComposeViewControllerDeleg
         default:
             break
         }
+        */
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
 
