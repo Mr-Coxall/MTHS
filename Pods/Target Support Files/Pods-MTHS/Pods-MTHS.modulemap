@@ -1,0 +1,6 @@
+framework module Pods_MTHS {
+  umbrella header "Pods-MTHS-umbrella.h"
+
+  export *
+  module * { export * }
+}
